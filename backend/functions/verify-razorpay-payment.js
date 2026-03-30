@@ -16,29 +16,49 @@ export default async function(request) {
 
   try {
     const body = await request.json();
-    console.log("Received body keys:", Object.keys(body));
+    // VERSION 2.1 - REDEPLOY
+    console.log("Full Body Received:", JSON.stringify(body));
 
-    const { razorpay_payment_id, razorpay_subscription_id, razorpay_signature, clientData } = body;
+    const { 
+      razorpay_payment_id, 
+      razorpay_subscription_id, 
+      razorpay_signature, 
+      clientData 
+    } = body;
 
-    if (!razorpay_payment_id) throw new Error("Missing razorpay_payment_id");
-    if (!razorpay_subscription_id) throw new Error("Missing razorpay_subscription_id");
-    if (!razorpay_signature) throw new Error("Missing razorpay_signature");
-    if (!clientData) throw new Error("Missing clientData");
+    // Verbose error to ensure we are running the new code
+    if (!razorpay_subscription_id) {
+        throw new Error(`DEBUG_V2.1: Missing razorpay_subscription_id. Received keys: ${Object.keys(body).join(', ')}`);
+    }
+    if (!razorpay_signature) {
+        throw new Error(`Missing razorpay_signature. Received keys: ${Object.keys(body).join(', ')}`);
+    }
+    if (!clientData) {
+        throw new Error("Missing clientData");
+    }
+    // Only throw if BOTH are missing (optional fallback)
+    if (!razorpay_payment_id && !razorpay_subscription_id) {
+        throw new Error(`Missing payment/subscription ID. Received: ${Object.keys(body).join(', ')}`);
+    }
 
     // 1. Verify Razorpay Signature
-    const expectedSignature = await computeHmac(
-        `${razorpay_payment_id}|${razorpay_subscription_id}`, 
-        RAZORPAY_KEY_SECRET
-    );
+    // If payment_id is missing, we use subscription_id for the HMAC string
+    const signData = razorpay_payment_id 
+        ? `${razorpay_payment_id}|${razorpay_subscription_id}` 
+        : razorpay_subscription_id;
+        
+    const expectedSignature = await computeHmac(signData, RAZORPAY_KEY_SECRET || "");
 
+    // Note: If verification fails here, we still want to log it
     if (expectedSignature !== razorpay_signature) {
+      console.error(`Signature Mismatch. Expected: ${expectedSignature}, Got: ${razorpay_signature}`);
       throw new Error('Invalid payment signature');
     }
 
     // 2. Save Client to Database
     const client = createClient({ 
-      baseUrl: DB_URL, 
-      anonKey: ANON_KEY 
+      baseUrl: DB_URL || "", 
+      anonKey: ANON_KEY || "" 
     });
     
     // Create Profile

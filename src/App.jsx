@@ -109,6 +109,7 @@ function CheckoutForm({ setView }) {
     // 1. Create Order
     const res = await fetch('https://qysyznj5.ap-southeast.insforge.app/functions/create-razorpay-order', {
       method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(form)
     });
     const { subscriptionId, keyId, error } = await res.json();
@@ -123,10 +124,16 @@ function CheckoutForm({ setView }) {
       description: "One-time Setup + Monthly Subscription",
       handler: async function (response) {
         // 3. Verify Payment
+        console.log('Razorpay response:', JSON.stringify(response));
         const vRes = await fetch('https://qysyznj5.ap-southeast.insforge.app/functions/verify-razorpay-payment', {
           method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
           body: JSON.stringify({
-            ...response,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_subscription_id: response.razorpay_subscription_id,
+            razorpay_signature: response.razorpay_signature,
             clientData: form
           })
         });
