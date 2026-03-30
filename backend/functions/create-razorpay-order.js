@@ -1,9 +1,8 @@
 const RAZORPAY_KEY_ID = Deno.env.get('RAZORPAY_KEY_ID');
 const RAZORPAY_KEY_SECRET = Deno.env.get('RAZORPAY_KEY_SECRET');
-const PLAN_ID = Deno.env.get('RAZORPAY_PLAN_ID'); // plan_SW7twPkUNWHeMt
+const PLAN_ID = Deno.env.get('RAZORPAY_PLAN_ID'); 
 
 export default async function(request) {
-  // CORS Headers
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
@@ -18,21 +17,12 @@ export default async function(request) {
   try {
     const { name, email, whatsapp, slug } = await request.json();
 
-    // 1. Create a Razorpay Subscription
+    // 1. Create a Razorpay Subscription (₹299/mo + ₹500 setup)
     const subBody = {
       plan_id: PLAN_ID,
       total_count: 120, // 10 years
       quantity: 1,
       customer_notify: 1,
-      addons: [
-        {
-          item: {
-            name: "One-time Onboarding & Setup Fee",
-            amount: 50000, // ₹500 in paise
-            currency: "INR"
-          }
-        }
-      ],
       notes: {
         slug: slug,
         customer_name: name,

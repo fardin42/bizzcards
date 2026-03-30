@@ -36,7 +36,7 @@ export default function App() {
             Join 100+ businesses using MyDigi Cards to share contact details instantly.
           </p>
           <button className="btn-primary" onClick={() => setView('checkout')}>
-            Get Your Digital Card - ₹500 Setup
+            Get Your Digital Card - ₹299/mo
           </button>
           
           <div style={{marginTop: '100px', cursor: 'pointer', opacity: 0.1}} onClick={() => setView('admin')}>
