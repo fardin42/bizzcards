@@ -24,7 +24,7 @@ export default function ThankYou({ paidSlug, setView }) {
           </div>
           <div className="step-item">
             <span className="step-number">3</span>
-            <span>Your card will be active within 24 hours.</span>
+            <span>Your card will be active within 72 hours.</span>
           </div>
         </div>
         
