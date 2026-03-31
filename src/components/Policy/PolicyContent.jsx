@@ -61,7 +61,7 @@ export default function PolicyContent({ type }) {
         <div style={{ marginTop: '20px' }}>
           <p><b>Business Name:</b> MyDigi Cards</p>
           <p><b>Email:</b> contact@pgrowmedia.com</p>
-          <p><b>Address:</b> FL NO B 1302 SHREEJI, EXCELENCIA SERENE MEADOW, SAWARKAR NAGAR GANGAPUR ROAD, Nashik, MH, 422013</p>
+          <p><b>Address:</b> 6th Floor 604, ABH CAPITAL, B-wing, opp. Mayor's Bungalow, Tilak Wadi, Police Staff Colony, Nashik, Maharashtra 422002</p>
           <p><b>Support Hours:</b> Mon-Sat, 10 AM - 6 PM IST</p>
         </div>
       </div>
