@@ -18,12 +18,12 @@ export default function ThankYou({ paidSlug, setView }) {
             <span className="step-number">1</span>
             <span>Our designers will start customizing your template.</span>
           </div>
-          <div className="step-item">
+          {/* <div className="step-item">
             <span className="step-number">2</span>
             <span>You'll receive a WhatsApp message once it's live.</span>
-          </div>
+          </div> */}
           <div className="step-item">
-            <span className="step-number">3</span>
+            <span className="step-number">2</span>
             <span>Your card will be active within 72 hours.</span>
           </div>
         </div>
