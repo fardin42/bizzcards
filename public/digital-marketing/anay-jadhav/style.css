@@ -184,8 +184,9 @@ h2 {
 }
 
 .contact-icon {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
   aspect-ratio: 1/1;
   border-radius: 12px;
   background-color: var(--white);
@@ -193,26 +194,29 @@ h2 {
   align-items: center;
   justify-content: center;
   color: var(--primary-red);
-  font-size: 18px;
+  font-size: 20px;
   box-shadow: var(--shadow);
 }
 
 .contact-detail {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 .contact-label {
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
+  margin-bottom: 2px;
 }
 
 .contact-value {
   font-size: 15px;
   font-weight: 600;
   color: var(--text-main);
+  line-height: 1.2;
 }
 
 /* Operating Hours */
@@ -342,6 +346,16 @@ h2 {
 
 .btn i {
   flex-shrink: 0;
+  font-size: 24px;
+}
+
+@media (max-width: 480px) {
+  .btn span {
+    display: none;
+  }
+  .btn {
+    height: 48px;
+  }
 }
 
 .btn-whatsapp {

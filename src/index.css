@@ -359,7 +359,7 @@ th {
   position: relative;
   width: 360px; /* Standard mobile width for previews */
   max-width: 100%;
-  aspect-ratio: 9/16; /* Standard smartphone aspect ratio */
+  aspect-ratio: 9/17; /* Standard smartphone aspect ratio */
   margin: 0 auto;
   border: 14px solid #1a1a1a;
   border-radius: 45px;

@@ -21,7 +21,7 @@ export default function Home({ setView }) {
       
       <div className="hero-preview">
         <iframe 
-          src="/digital-marketing/anay-jadhav/index.html" 
+          src="/jewellery/demo-jeweller/index.html" 
           title="Digital Card Preview"
         />
       </div>

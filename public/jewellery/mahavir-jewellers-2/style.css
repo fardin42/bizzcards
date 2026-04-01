@@ -341,6 +341,16 @@ h2 {
 
 .btn i {
   flex-shrink: 0;
+  font-size: 22px;
+}
+
+@media (max-width: 480px) {
+  .btn span {
+    display: none;
+  }
+  .btn {
+    height: 60px;
+  }
 }
 
 .btn-whatsapp {
