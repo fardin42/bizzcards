@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Minimalist Pill Digital Card</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #f0f2f5;
+            --primary: #111827;
+            --accent: #4f46e5;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            
+            /* Neumorphic Shadows for Pills */
+            --neu-shadow: 4px 4px 10px rgba(0,0,0,0.05), -4px -4px 10px rgba(255,255,255,1);
+            --neu-shadow-hover: 8px 8px 15px rgba(0,0,0,0.08), -8px -8px 15px rgba(255,255,255,1);
+            --neu-shadow-inner: inset 4px 4px 10px rgba(0,0,0,0.05), inset -4px -4px 10px rgba(255,255,255,1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 380px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Profile Pill */
+        .profile-wrapper {
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow);
+            border-radius: 60px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .profile-wrapper:hover {
+            box-shadow: var(--neu-shadow-hover);
+            transform: scale(1.01);
+        }
+
+        .pfp-pills {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            padding: 4px;
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow-inner);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pfp-pills img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .h-info h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 2px;
+        }
+
+        .h-info p {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Nav Pills Grid */
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .nav-pill {
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow);
+            border-radius: 40px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 700;
+            transition: 0.2s;
+        }
+
+        .nav-pill i {
+            color: var(--accent);
+        }
+
+        .nav-pill:active {
+            box-shadow: var(--neu-shadow-inner);
+            transform: scale(0.97);
+        }
+
+        /* Detail List Pills */
+        .detail-pill-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .pill-row {
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: 0.3s;
+        }
+
+        .pill-row:hover {
+            transform: translateX(5px);
+            box-shadow: var(--neu-shadow-hover);
+        }
+
+        .pill-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow-inner);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .pill-val {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-dark);
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Content Container (Rec) */
+        .section-rec {
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow);
+            border-radius: 30px;
+            padding: 24px;
+        }
+
+        .section-rec h3 {
+            font-size: 14px;
+            font-weight: 800;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .section-rec p {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        /* Footer Pills */
+        .footer-pill-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .pill-btn {
+            flex: 1;
+            padding: 16px;
+            border-radius: 40px;
+            border: none;
+            background: var(--bg-color);
+            box-shadow: var(--neu-shadow);
+            font-family: inherit;
+            font-weight: 800;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+        }
+
+        .pill-btn.main {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 10px 20px rgba(17, 24, 39, 0.2);
+        }
+
+        .pill-btn:active {
+            box-shadow: var(--neu-shadow-inner);
+            transform: scale(0.96);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        
+        <!-- Profile Header Pill -->
+        <div class="profile-wrapper">
+            <div class="pfp-pills">
+                <img src="../media/pfp.png" alt="Nexar">
+            </div>
+            <div class="h-info">
+                <h1>Nexar Precision</h1>
+                <p>Technical Director</p>
+            </div>
+        </div>
+
+        <!-- Action Pills Grid -->
+        <div class="nav-grid">
+            <a href="tel:+919988776655" class="nav-pill">
+                <i class="fa-solid fa-phone"></i> Call
+            </a>
+            <a href="https://wa.me/919988776655" class="nav-pill">
+                <i class="fa-brands fa-whatsapp"></i> Chat
+            </a>
+            <a href="mailto:director@nexarprecision.com" class="nav-pill">
+                <i class="fa-solid fa-envelope"></i> Email
+            </a>
+            <a href="https://maps.google.com" target="_blank" class="nav-pill">
+                <i class="fa-solid fa-location-dot"></i> Visit
+            </a>
+        </div>
+
+        <!-- About Rec -->
+        <div class="section-rec">
+            <h3>Specialization</h3>
+            <p>High-precision laboratory infrastructure and sterile industrial environments for cleanroom technologies.</p>
+        </div>
+
+        <!-- Details Pills Stack -->
+        <div class="detail-pill-stack">
+            <div class="pill-row">
+                <div class="pill-icon"><i class="fa-solid fa-mobile"></i></div>
+                <div class="pill-val">+91 99887 76655</div>
+            </div>
+            <div class="pill-row">
+                <div class="pill-icon"><i class="fa-solid fa-at"></i></div>
+                <div class="pill-val">director@nexarprecision.com</div>
+            </div>
+            <div class="pill-row">
+                <div class="pill-icon"><i class="fa-solid fa-globe"></i></div>
+                <div class="pill-val">www.nexarprecision.com</div>
+            </div>
+        </div>
+
+        <!-- Footer Footer Pills -->
+        <div class="footer-pill-row">
+            <button onclick="saveContact()" class="pill-btn main">
+                 Add Contact
+            </button>
+            <button onclick="shareProfile()" class="pill-btn">
+                <i class="fa-solid fa-share"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Contact.vcf";
+            a.href = url;
+            a.click();
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nexar Precision',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Sharing not supported.");
+            }
+        }
+    </script>
+</body>
+</html>

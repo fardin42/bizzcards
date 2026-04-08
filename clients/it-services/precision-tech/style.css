@@ -1,0 +1,232 @@
+:root {
+    --primary: #1e293b; /* Dark Steel Navy */
+    --accent: #3b82f6;  /* Industrial Blue */
+    --bg-light: #f8fafc;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+}
+
+.card-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: var(--white);
+    min-height: 100vh;
+    box-shadow: 0 0 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* 60/40 Split Top Header */
+.precision-header {
+    display: flex;
+    height: 320px;
+    background: var(--white);
+    border-bottom: 4px solid var(--primary);
+}
+
+.header-photo {
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.header-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-info {
+    width: 60%;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--primary);
+    color: var(--white);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 15% 100%);
+    margin-left: -5%; /* Overlap for a more structured look */
+}
+
+/* Adjusted info to compensate for clip-path */
+.header-info-inner {
+    padding-left: 20px;
+}
+
+.header-info-inner h1 {
+    font-size: 28px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+.header-info-inner p {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.company-logo {
+    margin-bottom: 24px;
+    height: 30px;
+}
+
+.company-logo i {
+    font-size: 30px;
+}
+
+/* Section Styling */
+.section {
+    padding: 32px 24px;
+}
+
+.section-title {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #e2e8f0;
+}
+
+/* Action Grid */
+.actions-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 8px;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: var(--primary);
+    color: #fff;
+    border-color: var(--primary);
+}
+
+.action-btn i {
+    font-size: 20px;
+}
+
+.action-btn span {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Contact Details */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background: #fdfdfd;
+    border-left: 3px solid #e2e8f0;
+}
+
+.contact-icon {
+    width: 24px;
+    color: var(--accent);
+    display: flex;
+    justify-content: center;
+}
+
+.contact-text .label {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 2px;
+}
+
+.contact-text .value {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+/* Sticky Bottom Nav */
+.bottom-nav {
+    position: sticky;
+    bottom: 0;
+    display: flex;
+    background: var(--primary);
+    padding: 12px 12px 24px 12px;
+    gap: 8px;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+.bottom-btn {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: white;
+}
+
+.btn-secondary {
+    background: rgba(255,255,255,0.05);
+    color: white;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Utility */
+.mb-8 { margin-bottom: 32px; }

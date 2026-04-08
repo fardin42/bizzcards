@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Left-Border Timeline Digital Card</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --primary: #111827;
+            --accent: #2563eb;
+            --line-color: #e5e7eb;
+            --text-dark: #1f2937;
+            --text-muted: #6b7280;
+            --timeline-left: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Continuous Vertical Line */
+        .timeline-main-line {
+            position: absolute;
+            left: var(--timeline-left);
+            top: 60px; /* Offset from top */
+            bottom: 60px; /* Offset from bottom */
+            width: 2px;
+            background-color: var(--line-color);
+            z-index: 1;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 450px;
+            padding: 0 24px 0 80px; /* Offset to the right of the line */
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Timeline Section with Node */
+        .timeline-section {
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideIn 0.8s forwards;
+        }
+
+        @keyframes slideIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* The Diamond Node on the Line */
+        .timeline-section::before {
+            content: '';
+            position: absolute;
+            left: -43px; /* Centers on the 2px line (40px + 3px gap) - adjust for node width */
+            top: 5px;
+            width: 8px;
+            height: 8px;
+            background: var(--bg-color);
+            border: 2px solid var(--accent);
+            transform: rotate(45deg);
+            z-index: 3;
+        }
+
+        /* Active Node Effect for some headers */
+        .timeline-section.active::before {
+            background: var(--accent);
+        }
+
+        /* Section Headings */
+        .section-header {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        /* Content Styles */
+        .profile-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .about-para {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-dark);
+        }
+
+        /* Action Buttons snapped to timeline */
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-link {
+            padding: 16px 20px;
+            background: #f3f4f6;
+            border-radius: 12px;
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            width: fit-content;
+            min-width: 200px;
+        }
+
+        .btn-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateX(8px);
+        }
+
+        .btn-link i {
+            font-size: 16px;
+        }
+
+        /* Contact Details snapped left */
+        .contact-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .contact-entry {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            color: var(--text-muted);
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .contact-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Working Hours Section */
+        .hours-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .hour-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 280px;
+            font-size: 13px;
+            border-bottom: 1px dotted var(--line-color);
+            padding-bottom: 4px;
+        }
+
+        .hour-day {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .hour-val {
+            color: var(--text-muted);
+        }
+
+        /* Industrial Badge */
+        .badge-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge-item {
+            font-size: 11px;
+            font-weight: 700;
+            background: #eff6ff;
+            color: var(--accent);
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        /* Profile Image */
+        .profile-img-box {
+            width: 100%;
+            height: 200px;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #f9fafb;
+            margin-bottom: 24px;
+        }
+
+        .profile-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 480px) {
+            :root {
+                --timeline-left: 30px;
+            }
+            .card-container {
+                padding: 0 20px 0 60px;
+            }
+            .timeline-section::before {
+                left: -33px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Timeline Line -->
+    <div class="timeline-main-line"></div>
+
+    <div class="card-container">
+        
+        <!-- Profile Section -->
+        <section class="timeline-section active">
+            <div class="profile-img-box">
+                <img src="../media/pfp.png" alt="Nexar Precision">
+            </div>
+            <div class="header-content">
+                <h1>Nexar Precision</h1>
+                <p class="profile-subtitle">Technical Director at Nexar Cleanroom Systems</p>
+                <div class="badge-grid">
+                    <span class="badge-item">Cleanrooms</span>
+                    <span class="badge-item">Industrial HVAC</span>
+                    <span class="badge-item">Automation</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Connect Action Section -->
+        <section class="timeline-section">
+            <div class="section-header">01 // Quick Connect</div>
+            <h2>Let's Coordinate</h2>
+            <div class="btn-list">
+                <a href="tel:+919988776655" class="btn-link">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Primary Hotline</span>
+                </a>
+                <a href="https://wa.me/919988776655" class="btn-link">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Instant Messaging</span>
+                </a>
+                <a href="mailto:director@nexarprecision.com" class="btn-link">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Official Registry</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- About / Profile Section -->
+        <section class="timeline-section">
+            <div class="section-header">02 // Profile Identity</div>
+            <h2>Infrastructure Oversight</h2>
+            <p class="about-para">
+                Managing high-precision surgical and industrial environments. Our focus remains on zero-downtime sterile rooms and sophisticated infrastructure design for the electronics and pharma sectors.
+            </p>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="timeline-section">
+            <div class="section-header">03 // Data Center</div>
+            <h2>Location & Logistics</h2>
+            <div class="contact-grid">
+                <div class="contact-entry">
+                    <span class="contact-label">HQ Address</span>
+                    <span class="contact-value">Block P-42, Industrial Hub, Tech Park, India</span>
+                </div>
+                <div class="contact-entry">
+                    <span class="contact-label">Corporate Email</span>
+                    <span class="contact-value">director@nexarprecision.com</span>
+                </div>
+                <div class="contact-entry">
+                    <span class="contact-label">Web Portal</span>
+                    <span class="contact-value">www.nexarprecision.com</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Working Hours Section -->
+        <section class="timeline-section">
+            <div class="section-header">04 // Operational Hours</div>
+            <h2>Standard Schedule</h2>
+            <div class="hours-list">
+                <div class="hour-row">
+                    <span class="hour-day">Mon - Fri</span>
+                    <span class="hour-val">09:00 AM - 06:30 PM</span>
+                </div>
+                <div class="hour-row">
+                    <span class="hour-day">Saturday</span>
+                    <span class="hour-val">10:00 AM - 02:00 PM</span>
+                </div>
+                <div class="hour-row">
+                    <span class="hour-day">Sunday</span>
+                    <span class="hour-val">Closed / Emergency Only</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Footer -->
+        <section class="timeline-section" style="margin-top: 20px;">
+            <button onclick="saveContact()" style="padding: 20px; width: 100%; border-radius: 12px; background: var(--primary); color: white; border: none; font-weight: 800; text-transform: uppercase; cursor: pointer; letter-spacing: 1px;">
+                Download Identity (VCF)
+            </button>
+            <p style="text-align: left; font-size: 10px; color: var(--text-muted); margin-top: 12px; text-transform: uppercase; letter-spacing: 1px;">
+                Nexar Precision © 2026 / Technical Excellence
+            </p>
+        </section>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nADR;TYPE=WORK:;;Industrial Hub, Block P-42, Tech Park;India;;;\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Timeline_Identity.vcf";
+            a.href = url;
+            a.click();
+        }
+    </script>
+</body>
+</html>

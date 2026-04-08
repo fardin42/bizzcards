@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Masonry Grid Digital Card</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-base: #f8fafc;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --card-shadow-hover: 0 20px 25px -5px rgba(37, 99, 235, 0.1), 0 10px 10px -6px rgba(37, 99, 235, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header Layout */
+        .profile-hdr {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .pfp-wrap {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .pfp-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hdr-info h1 {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .hdr-info p {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        /* Masonry Grid Setup */
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+        }
+
+        .masonry-grid {
+            column-count: 2;
+            column-gap: 20px;
+            width: 100%;
+        }
+
+        .masonry-item {
+            break-inside: avoid;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 20px;
+            padding: 24px 20px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            border: 1px solid rgba(0,0,0,0.02);
+        }
+
+        .masonry-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-shadow-hover);
+            border-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .item-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: #eff6ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent);
+            font-size: 18px;
+        }
+
+        .item-content h3 {
+            font-size: 14px;
+            font-weight: 700;
+            line-height: 1.4;
+            margin-bottom: 4px;
+        }
+
+        .item-content p {
+            font-size: 11px;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        /* Unique Staggered Heights */
+        .h-long { padding-bottom: 40px; }
+        .h-short { padding-bottom: 20px; }
+
+        /* Quick Action Bar */
+        .action-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .strip-btn {
+            background: white;
+            box-shadow: var(--card-shadow);
+            border-radius: 16px;
+            aspect-ratio: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary);
+            font-size: 18px;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .strip-btn:active {
+            transform: scale(0.9);
+        }
+
+        /* Detail List */
+        .info-card {
+            background: white;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .info-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        .info-txt {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .info-txt span:first-child {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+            font-weight: 700;
+        }
+
+        .info-txt span:last-child {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .bottom-actions {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-bold {
+            flex: 1;
+            padding: 18px;
+            border-radius: 20px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-bold.alt {
+            background: white;
+            color: var(--primary);
+            box-shadow: var(--card-shadow);
+        }
+
+        .btn-bold:active {
+            transform: scale(0.97);
+        }
+
+        /* Responsive Columns */
+        @media (max-width: 360px) {
+            .masonry-grid { column-count: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        
+        <!-- Header Section -->
+        <div class="profile-hdr">
+            <div class="pfp-wrap">
+                <img src="../media/pfp.png" alt="Nexar">
+            </div>
+            <div class="hdr-info">
+                <h1>Nexar Precision</h1>
+                <p>Technical Director</p>
+            </div>
+        </div>
+
+        <!-- Quick Interaction Strip -->
+        <div class="action-strip">
+            <a href="tel:+919988776655" class="strip-btn"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/919988776655" class="strip-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:director@nexarprecision.com" class="strip-btn"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://maps.google.com" target="_blank" class="strip-btn"><i class="fa-solid fa-location-dot"></i></a>
+        </div>
+
+        <!-- Core Services Masonry -->
+        <section>
+            <div class="section-header">
+                <h2>Priority Services</h2>
+            </div>
+            
+            <div class="masonry-grid">
+                
+                <div class="masonry-item h-long">
+                    <div class="item-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="item-content">
+                        <h3>Cleanroom Tech</h3>
+                        <p>Specialized high-precision environment design & implementation.</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item h-short">
+                    <div class="item-icon"><i class="fa-solid fa-wind"></i></div>
+                    <div class="item-content">
+                        <h3>Industrial HVAC</h3>
+                        <p>Advanced sterile ventilation & climate control.</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item h-short">
+                    <div class="item-icon"><i class="fa-solid fa-drafting-compass"></i></div>
+                    <div class="item-content">
+                        <h3>Infa Design</h3>
+                        <p>Strategic industrial infrastructure blueprints.</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item h-long">
+                    <div class="item-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div class="item-content">
+                        <h3>Automation</h3>
+                        <p>End-to-end industrial process automation & controls.</p>
+                    </div>
+                </div>
+
+                <div class="masonry-item h-short">
+                    <div class="item-icon"><i class="fa-solid fa-gears"></i></div>
+                    <div class="item-content">
+                        <h3>Maintenance</h3>
+                        <p>Zero-downtime industrial support services.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Official Contact Card -->
+        <div class="info-card">
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-phone-volume"></i></div>
+                <div class="info-txt">
+                    <span>Corporate Hotline</span>
+                    <span>+91 99887 76655</span>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-link"></i></div>
+                <div class="info-txt">
+                    <span>Digital Portal</span>
+                    <span>www.nexarprecision.com</span>
+                </div>
+            </div>
+            <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-building"></i></div>
+                <div class="info-txt">
+                    <span>HQ Location</span>
+                    <span>Industrial Hub, Tech Park, India</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="bottom-actions">
+            <button onclick="saveContact()" class="btn-bold">
+                <i class="fa-solid fa-user-plus"></i> Save Connection
+            </button>
+            <button onclick="shareProfile()" class="btn-bold alt">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nADR;TYPE=WORK:;;Industrial Hub, Block P-42, Tech Park;India;;;\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Precision_Masonry.vcf";
+            a.href = url;
+            a.click();
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nexar Precision - Service Portfolio',
+                    text: 'View our cleanroom and industrial infrastructure services.',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Sharing not supported.");
+            }
+        }
+    </script>
+</body>
+</html>

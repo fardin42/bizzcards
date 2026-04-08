@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Neumorphic Digital Card</title>
+    
+    <!-- SEO Meta -->
+    <meta name="description" content="Technical Director at Nexar Cleanroom Systems. Connect for industrial infrastructure and cleanroom technologies.">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #ebf0f4;
+            --primary: #0f172a;
+            --accent: #2563eb;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            
+            /* Neumorphic Shadows */
+            --shadow-light: -8px -8px 16px rgba(255, 255, 255, 0.9);
+            --shadow-dark: 8px 8px 16px rgba(163, 177, 198, 0.5);
+            --shadow-light-small: -4px -4px 8px rgba(255, 255, 255, 0.9);
+            --shadow-dark-small: 4px 4px 8px rgba(163, 177, 198, 0.4);
+            
+            --inner-shadow-light: inset -4px -4px 8px rgba(255, 255, 255, 0.8);
+            --inner-shadow-dark: inset 4px 4px 8px rgba(163, 177, 198, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            font-family: 'Outfit', 'Inter', sans-serif;
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Neumorphic Elements */
+        .neu-shape {
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light), var(--shadow-dark);
+            border-radius: 24px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .neu-pill {
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light-small), var(--shadow-dark-small);
+            border-radius: 50px;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .neu-pill:active {
+            box-shadow: var(--inner-shadow-light), var(--inner-shadow-dark);
+            transform: scale(0.98);
+        }
+
+        /* Header Section */
+        .profile-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 16px;
+        }
+
+        .pfp-container {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light), var(--shadow-dark);
+            padding: 8px;
+            position: relative;
+        }
+
+        .pfp-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .header-content h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+
+        .header-content p {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Quick Actions Grid */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .action-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            padding: 20px;
+            border-radius: 20px;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light-small), var(--shadow-dark-small);
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.3s ease;
+        }
+
+        .action-item i {
+            font-size: 20px;
+            color: var(--accent);
+        }
+
+        .action-item:hover {
+            transform: translateY(-4px);
+            box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.95), 10px 10px 20px rgba(163, 177, 198, 0.6);
+        }
+
+        .action-item:active {
+            box-shadow: var(--inner-shadow-light), var(--inner-shadow-dark);
+            transform: translateY(0);
+        }
+
+        /* Sections */
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-light);
+            margin-bottom: 16px;
+            padding-left: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(163, 177, 198, 0.3);
+        }
+
+        .about-text {
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Contact List */
+        .contact-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-card {
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light-small), var(--shadow-dark-small);
+            border-radius: 16px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s ease;
+        }
+
+        .contact-icon-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--bg-color);
+            box-shadow: var(--inner-shadow-light), var(--inner-shadow-dark);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent);
+            font-size: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Capabilities (Floating Chips) */
+        .chips-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .chip {
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light-small), var(--shadow-dark-small);
+            padding: 8px 14px;
+            border-radius: 50px;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Footer Interaction */
+        .footer-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+        }
+
+        .btn-main {
+            flex: 1;
+            padding: 16px;
+            border-radius: 16px;
+            border: none;
+            background: var(--bg-color);
+            box-shadow: var(--shadow-light), var(--shadow-dark);
+            font-family: inherit;
+            font-weight: 700;
+            color: var(--primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-main.primary {
+            background: var(--primary);
+            color: white;
+            box-shadow: 4px 4px 12px rgba(15, 23, 42, 0.3);
+        }
+
+        .btn-main:active {
+            box-shadow: var(--inner-shadow-light), var(--inner-shadow-dark);
+            transform: scale(0.97);
+        }
+        
+        .btn-main.primary:active {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 380px) {
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        
+        <!-- Header -->
+        <div class="neu-shape profile-header">
+            <div class="pfp-container">
+                <img src="../media/pfp.png" alt="Nexar Precision">
+            </div>
+            <div class="header-content">
+                <h1>Nexar Precision</h1>
+                <p>Technical Director</p>
+            </div>
+        </div>
+
+        <!-- Quick Connect -->
+        <div class="quick-actions">
+            <a href="tel:+919988776655" class="action-item">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call Me</span>
+            </a>
+            <a href="https://wa.me/919988776655" class="action-item">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp</span>
+            </a>
+            <a href="mailto:director@nexarprecision.com" class="action-item">
+                <i class="fa-solid fa-envelope"></i>
+                <span>Email Us</span>
+            </a>
+            <a href="https://maps.google.com" target="_blank" class="action-item">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Locate Us</span>
+            </a>
+        </div>
+
+        <!-- About Section -->
+        <div class="neu-shape">
+            <h2 class="section-title">Professional Profile</h2>
+            <p class="about-text">
+                Leading technical operations at <b>Nexar Cleanroom Systems</b>. We specialize in high-precision industrial environments and sophisticated laboratory infrastructure.
+            </p>
+        </div>
+
+        <!-- Capabilities -->
+        <div class="neu-shape">
+            <h2 class="section-title">Our Capabilities</h2>
+            <div class="chips-container">
+                <div class="chip">Cleanroom Tech</div>
+                <div class="chip">Industrial HVAC</div>
+                <div class="chip">Infra Design</div>
+                <div class="chip">Automation</div>
+            </div>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="neu-shape">
+            <h2 class="section-title">Data Center</h2>
+            <div class="contact-list">
+                <div class="contact-card">
+                    <div class="contact-icon-box"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Hotline</span>
+                        <span class="contact-value">+91 99887 76655</span>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-box"><i class="fa-solid fa-at"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">director@nexarprecision.com</span>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-box"><i class="fa-solid fa-globe"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Website</span>
+                        <span class="contact-value">www.nexarprecision.com</span>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <div class="contact-icon-box"><i class="fa-solid fa-building"></i></div>
+                    <div class="contact-info">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Tech Park, India</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="footer-actions">
+            <button onclick="saveContact()" class="btn-main primary">
+                <i class="fa-solid fa-download"></i> Save Contact
+            </button>
+            <button onclick="shareProfile()" class="btn-main">
+                <i class="fa-solid fa-share-nodes"></i> Share
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nADR;TYPE=WORK:;;Industrial Hub, Block P-42, Tech Park;India;;;\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Precision_Contact.vcf";
+            a.href = url;
+            a.click();
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nexar Precision - Neumorphic Digital Card',
+                    text: 'Check out this professional digital card.',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Sharing not supported on this browser.");
+            }
+        }
+    </script>
+</body>
+</html>

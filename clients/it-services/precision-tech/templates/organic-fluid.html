@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Organic Fluid Digital Card</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --primary: #4f46e5; /* Indigo */
+            --secondary: #ec4899; /* Pink */
+            --accent: #22d3ee; /* Cyan */
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --grad-flow: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #f8fafc;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Topographic Background (Fluid SVG) */
+        .topo-bg {
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            opacity: 0.15;
+            z-index: 0;
+            transform: rotate(-15deg);
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 420px;
+            background: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 10;
+            padding-bottom: 40px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.05);
+        }
+
+        /* Fluid Header with Blob Picture */
+        .fluid-header {
+            padding: 60px 32px 40px;
+            text-align: center;
+            position: relative;
+            background: white;
+        }
+
+        .fluid-header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 250px;
+            background: var(--grad-flow);
+            opacity: 0.04;
+            border-radius: 0 0 50% 50%;
+            z-index: -1;
+        }
+
+        .pfp-blob-wrap {
+            position: relative;
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 24px;
+        }
+
+        .pfp-blob-wrap svg {
+            position: absolute;
+            width: 0;
+            height: 0;
+        }
+
+        .blob-mask {
+            width: 100%;
+            height: 100%;
+            background: var(--grad-flow);
+            /* clip-path: url(#blob-shape); */
+            padding: 6px;
+            animation: blob-animate 8s ease-in-out infinite alternate;
+        }
+
+        .blob-mask img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            clip-path: url(#blob-shape);
+            background: white;
+        }
+
+        @keyframes blob-animate {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+        }
+
+        h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 4px;
+            background: var(--grad-flow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Dynamic Connect Pills */
+        .connect-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            padding: 0 32px 32px;
+        }
+
+        .pills-btn {
+            padding: 14px 24px;
+            border-radius: 50px;
+            background: var(--bg-color);
+            border: 2px solid #f1f5f9;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .pills-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.1);
+        }
+
+        .pills-btn i {
+            color: var(--secondary);
+        }
+
+        /* Waves / Content Sections */
+        .section-fluid {
+            padding: 40px 32px;
+            background: white;
+            position: relative;
+        }
+
+        .fluid-card {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid rgba(0,0,0,0.02);
+            transition: transform 0.3s ease;
+        }
+
+        .fluid-card:hover {
+            transform: scale(1.02);
+        }
+
+        .blob-title {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--text-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .blob-icon-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--grad-flow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+        }
+
+        .fluid-text {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--text-muted);
+        }
+
+        /* Floating Contact Bubbles */
+        .bubble-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .bubble-item {
+            padding: 16px 20px;
+            background: white;
+            border: 1px solid #f1f5f9;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .bubble-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .bubble-label {
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--secondary);
+            text-transform: uppercase;
+        }
+
+        .bubble-val {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        /* Footer Fluid Primary */
+        .footer-fluid-cta {
+            padding: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .btn-fluid {
+            width: 100%;
+            padding: 20px;
+            border-radius: 30px;
+            border: none;
+            background: var(--grad-flow);
+            color: white;
+            font-family: inherit;
+            font-weight: 800;
+            font-size: 15px;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-fluid:active {
+            transform: scale(0.97);
+            box-shadow: 0 5px 15px rgba(236, 72, 153, 0.2);
+        }
+
+        /* SVG Blob shape definition */
+        #blob-shape {
+            clip-rule:nonzero;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Topographic Background -->
+    <svg class="topo-bg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <path fill="var(--primary)" d="M44.7,-76.4C58.1,-69.2,69.2,-58.1,76.4,-44.7C83.7,-31.4,87.1,-15.7,85.6,-0.9C84.1,13.9,77.7,27.7,69.5,40.1C61.3,52.5,51.3,63.5,39.1,71.2C26.9,78.9,12.5,83.3,-1.9,86.6C-16.3,89.9,-31.5,92,-44.7,86.7C-57.9,81.4,-68.9,68.7,-76.8,55C-84.7,41.3,-89.4,26.6,-91.1,11.3C-92.8,-4,-91.5,-19.9,-85,-33.5C-78.5,-47.1,-66.8,-58.4,-53.6,-66.1C-40.4,-73.8,-25.6,-77.9,-10.8,-76.4C4,-74.9,18.8,-67.8,33.5,-61.1C48.2,-54.4,62.8,-48.1,71.3,-37.2" transform="translate(100 100)" />
+    </svg>
+
+    <!-- Blob Shape for CSS clip-path -->
+    <svg width="0" height="0">
+        <defs>
+            <clipPath id="blob-shape" clipPathUnits="objectBoundingBox">
+                <path d="M0.5,0 C0.776,0,1,0.224,1,0.5 C1,0.776,0.776,1,0.5,1 C0.224,1,0,0.776,0,0.5 C0,0.224,0.224,0,0.5,0 M0.5,0.05 C0.749,0.05,0.95,0.251,0.95,0.5 C0.95,0.749,0.749,0.95,0.5,0.95 C0.251,0.95,0.05,0.749,0.05,0.5 C0.05,0.251,0.251,0.05,0.5,0.05" />
+            </clipPath>
+        </defs>
+    </svg>
+
+    <div class="card-container">
+        
+        <!-- Header with Fluid Blob Picture -->
+        <header class="fluid-header">
+            <div class="pfp-blob-wrap">
+                <div class="blob-mask">
+                    <img src="../media/pfp.png" alt="Nexar">
+                </div>
+            </div>
+            <h1>Nexar Precision</h1>
+            <p class="subtitle">Technical Director</p>
+        </header>
+
+        <!-- Social / Connect Pills -->
+        <div class="connect-pills">
+            <a href="tel:+919988776655" class="pills-btn"><i class="fa-solid fa-phone"></i> Call</a>
+            <a href="https://wa.me/919988776655" class="pills-btn"><i class="fa-brands fa-whatsapp"></i> Chat</a>
+            <a href="mailto:director@nexarprecision.com" class="pills-btn"><i class="fa-solid fa-envelope"></i> Email</a>
+            <a href="https://maps.google.com" class="pills-btn"><i class="fa-solid fa-location-arrow"></i> Visit</a>
+        </div>
+
+        <!-- Vision Section -->
+        <section class="section-fluid">
+            <div class="fluid-card">
+                <h2 class="blob-title">
+                    <div class="blob-icon-circle"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    Our Vision
+                </h2>
+                <p class="fluid-text">
+                    Merging high-precision industrial logic with creative adaptability. We design future-proof cleanroom systems and innovative lab infrastructures.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services (Fluid Bubbles) -->
+        <section class="section-fluid" style="padding-top: 0;">
+            <h2 class="blob-title" style="margin-left: 10px;">Capabilities</h2>
+            <div class="bubble-grid">
+                <div class="bubble-item">
+                    <div class="blob-icon-circle"><i class="fa-solid fa-bezier-curve"></i></div>
+                    <div class="bubble-info">
+                        <span class="bubble-label">Precision Layouts</span>
+                        <span class="bubble-val">Cleanroom Infrastructure</span>
+                    </div>
+                </div>
+                <div class="bubble-item">
+                    <div class="blob-icon-circle"><i class="fa-solid fa-wind"></i></div>
+                    <div class="bubble-info">
+                        <span class="bubble-label">Fluid Systems</span>
+                        <span class="bubble-val">Advanced Industrial HVAC</span>
+                    </div>
+                </div>
+                <div class="bubble-item">
+                    <div class="blob-icon-circle"><i class="fa-solid fa-microchip"></i></div>
+                    <div class="bubble-info">
+                        <span class="bubble-label">Logic Control</span>
+                        <span class="bubble-val">Process Automation</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Actions -->
+        <div class="footer-fluid-cta">
+            <button onclick="saveContact()" class="btn-fluid">
+                Sync Digital Identity
+            </button>
+            <div style="text-align: center; margin-top: 20px;">
+                <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted);">
+                    Fluid Logic © 2026 / By Nexar
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nADR;TYPE=WORK:;;Industrial Hub, Block P-42, Tech Park;India;;;\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Fluid_Identity.vcf";
+            a.href = url;
+            a.click();
+        }
+    </script>
+</body>
+</html>

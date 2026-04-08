@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexar Precision - Thin-Line Elegance Digital Card</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Mukta:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-pure: #ffffff;
+            --text-dark: #2d3436;
+            --text-muted: #636e72;
+            --line-color: rgba(0, 0, 0, 0.08);
+            --serif-font: 'Playfair Display', serif;
+            --sans-font: 'Inter', sans-serif;
+            --marathi-font: 'Mukta', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-pure);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 80px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fixed Oversized Watermark */
+        .watermark {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 140%; /* Oversized */
+            opacity: 0.04; /* 4% opacity */
+            pointer-events: none;
+            z-index: -1;
+            filter: grayscale(1);
+        }
+
+        .card-wrapper {
+            width: 100%;
+            max-width: 440px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 60px; /* Double normal padding/spacing */
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Header Area */
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-box {
+            font-size: 24px;
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            letter-spacing: 4px;
+        }
+
+        .name-serif {
+            font-family: var(--serif-font);
+            font-size: 36px;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 8px;
+        }
+
+        .name-marathi {
+            font-family: var(--marathi-font);
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+        }
+
+        .title-sans {
+            font-family: var(--sans-font);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--text-muted);
+            margin-top: 12px;
+        }
+
+        /* Action Buttons */
+        .action-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 20px 0;
+        }
+
+        .action-icon-btn {
+            color: var(--text-dark);
+            font-size: 20px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .action-icon-btn:hover {
+            opacity: 0.5;
+        }
+
+        /* Detail List with 1px Thin Lines */
+        .details-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-item {
+            width: 100%;
+            padding: 32px 0; /* Generous vertical spacing */
+            border-bottom: 1px solid var(--line-color);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .detail-item:first-child {
+            border-top: 1px solid var(--line-color);
+        }
+
+        .detail-label-bilingual {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .detail-val {
+            font-family: var(--serif-font);
+            font-size: 17px;
+            font-weight: 400;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+
+        /* Bottom Action Buttons */
+        .footer-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .btn-elegant {
+            background: transparent;
+            border: 1px solid var(--text-dark);
+            color: var(--text-dark);
+            padding: 16px 32px;
+            font-family: var(--sans-font);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-elegant:hover {
+            background: var(--text-dark);
+            color: #ffffff;
+        }
+
+        .btn-marathi-small {
+            font-family: var(--marathi-font);
+            font-size: 13px;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Responsive Settings */
+        @media (max-width: 480px) {
+            .name-serif { font-size: 32px; }
+            .card-wrapper { gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Oversized Watermark -->
+    <img src="../media/watermark.png" class="watermark" alt="Geometric Motif Watermark">
+
+    <div class="card-wrapper">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-box">
+                <i class="fa-solid fa-gem"></i>
+            </div>
+            <div class="header-text">
+                <h1 class="name-serif">Nexar Precision</h1>
+                <p class="name-marathi">नेक्सार प्रिसिजन</p>
+                <p class="title-sans">Technical Director<br><span style="letter-spacing: 1px; font-family: var(--marathi-font);">तांत्रिक संचालक</span></p>
+            </div>
+        </header>
+
+        <!-- Dynamic Action Row -->
+        <div class="action-row">
+            <a href="tel:+919988776655" class="action-icon-btn"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/919988776655" class="action-icon-btn"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="mailto:director@nexarprecision.com" class="action-icon-btn"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://maps.google.com" target="_blank" class="action-btn"><i class="fa-solid fa-location-dot"></i></a>
+        </div>
+
+        <!-- Corporate Data Section -->
+        <div class="details-section">
+            <div class="detail-item">
+                <span class="detail-label-bilingual">Connect / संपर्क</span>
+                <a href="tel:+919988776655" class="detail-val">+91 99887 76655</a>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label-bilingual">Official / कार्यालयीन</span>
+                <a href="mailto:director@nexarprecision.com" class="detail-val">director@nexarprecision.com</a>
+            </div>
+            <div class="detail-item">
+                <span class="detail-label-bilingual">Regional Hub / प्रादेशिक केंद्र</span>
+                <span class="detail-val">Industrial Hub, Block P-42, Tech Park, India</span>
+            </div>
+            <div class="detail-item" style="border-bottom: none;">
+                <span class="detail-label-bilingual">Digital Presence / डिजिटल उपस्थिती</span>
+                <a href="https://www.nexarprecision.com" target="_blank" class="detail-val">www.nexarprecision.com</a>
+            </div>
+        </div>
+
+        <!-- Footer Actions -->
+        <div class="footer-cta">
+            <button onclick="saveContact()" class="btn-elegant">
+                Synchronize Contact
+                <span class="btn-marathi-small">नेटवर्कमध्ये जोडा</span>
+            </button>
+            <button onclick="shareProfile()" style="border: none; background: transparent; text-transform: uppercase; letter-spacing: 2px; font-size: 10px; opacity: 0.6; cursor: pointer;">
+                Share Intelligence / माहिती सामायिक करा
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        function saveContact() {
+            const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Nexar Precision\nORG:Nexar Cleanroom Systems\nTITLE:Technical Director\nTEL;TYPE=WORK,VOICE:+919988776655\nEMAIL:director@nexarprecision.com\nADR;TYPE=WORK:;;Industrial Hub, Block P-42, Tech Park;India;;;\nURL:https://nexarprecision.com\nEND:VCARD";
+            const blob = new Blob([vcard], { type: "text/vcard" });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.download = "Nexar_Precision_Elegance.vcf";
+            a.href = url;
+            a.click();
+        }
+
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Nexar Precision - Elegant Presence',
+                    text: 'Tap to view the official digital presence of Nexar Precision.',
+                    url: window.location.href
+                }).catch(console.error);
+            } else {
+                alert("Sharing functionality is restricted on this browser.");
+            }
+        }
+    </script>
+</body>
+</html>
