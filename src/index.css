@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #fffdfb;
   --panel: #ffffff;
   --primary: #e12b2c;
@@ -379,6 +379,30 @@ th {
   width: 100%;
   height: 100%;
   border: none;
+}
+
+.preview-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #f8fafc 0%, #edf2f7 100%);
+  color: var(--text-dim);
+}
+
+.preview-placeholder span {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+}
+
+.preview-placeholder p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.6;
+  margin: 0;
 }
 
 /* Thank You Page */

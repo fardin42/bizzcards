@@ -6,7 +6,7 @@ export default function Home({ setView }) {
       <div className="hero-content">
         <h1 style={{ lineHeight: '1.1' }}>Modern Digital Business Cards for Professionals</h1>
         <p style={{color: 'var(--text-dim)', fontSize: '1.1rem', marginBottom: '30px'}}>
-          Share your contact details instantly with a sleek, one-page digital profile. Join 100+ businesses using MyDigi Cards.
+          Share your contact details instantly with a sleek, one-page digital profile. Join 100+ businesses using Bizzcards.
         </p>
         <ul style={{textAlign: 'left', color: 'var(--text-dim)', marginBottom: '30px', paddingLeft: '20px'}}>
           <li>✓ One-click WhatsApp & Save Contact</li>
@@ -20,10 +20,10 @@ export default function Home({ setView }) {
       </div>
       
       <div className="hero-preview">
-        <iframe 
-          src="/jewellery/demo-jeweller/index.html" 
-          title="Digital Card Preview"
-        />
+        <div className="preview-placeholder">
+          <span>📱</span>
+          <p>Preview Coming Soon</p>
+        </div>
       </div>
     </section>
   );

@@ -127,7 +127,7 @@ export default function AdminDashboard({ clients, toggleCardStatus, deleteClient
       <aside className="admin-sidebar">
         <div className="sidebar-header">
           <div className="logo">
-            <span className="logo-icon">💳</span> DigiCard
+            <span className="logo-icon">💳</span> Bizzcards
           </div>
           <button className="sidebar-back-btn" onClick={() => setView('home')} title="Back to site">
             <ArrowLeft size={18} />
@@ -233,12 +233,13 @@ export default function AdminDashboard({ clients, toggleCardStatus, deleteClient
                         </div>
                       ) : (
                         <div className="row-action-group">
-                          {/* Distinct Suspend / Activate button */}
+                          {/* Suspend / Activate button — TEMPORARILY DISABLED */}
                           {card && (
                             <button
-                              className={`btn-status-toggle ${card.status === 'active' ? 'btn-toggle-suspend' : 'btn-toggle-activate'}`}
-                              onClick={(e) => handleToggleStatus(card, e)}
-                              title={card.status === 'active' ? 'Suspend' : 'Activate'}
+                              className="btn-status-toggle"
+                              style={{ opacity: 0.35, cursor: 'not-allowed', background: '#f1f5f9', color: '#94a3b8', border: '1px solid #e2e8f0' }}
+                              disabled
+                              title="Temporarily unavailable"
                             >
                               {card.status === 'active' ? <ShieldOff size={15}/> : <ShieldCheck size={15}/>}
                             </button>

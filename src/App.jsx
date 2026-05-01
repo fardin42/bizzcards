@@ -101,7 +101,7 @@ export default function App() {
 
   const handleAdminLogin = (e) => {
     e.preventDefault();
-    if (adminPass === 'fardin42') {
+    if (adminPass === 'kira42') {
       setIsAdminAuthenticated(true);
     } else {
       alert("Invalid Password");
@@ -121,7 +121,7 @@ export default function App() {
             </button>
             <div className="card-form">
               <h2>Claim Your URL</h2>
-              <p style={{color: '#a0aec0'}}>Your card will be at mydigi.cards/<b>slug</b></p>
+              <p style={{color: '#a0aec0'}}>Your card will be at bizzcards/<b>slug</b></p>
               <CheckoutForm setView={setView} setPaidSlug={setPaidSlug} />
             </div>
           </section>

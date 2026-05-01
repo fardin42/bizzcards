@@ -16,7 +16,7 @@ export default function Footer({ setView, setPolicyType }) {
         <span className="footer-link" onClick={() => handlePolicy('contact')}>Contact Us</span>
       </div>
       <p style={{ marginTop: '10px', fontSize: '0.8rem', opacity: 0.6 }}>
-        © 2025 MyDigi Cards. Powered by <a href="https://pgrowmedia.com" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', fontWeight: 'bold' }}>Pgrow media</a>
+        © 2025 Bizzcards. All rights reserved.
       </p>
     </footer>
   );

@@ -9,7 +9,7 @@ export default function ThankYou({ paidSlug, setView }) {
         <p style={{ color: 'var(--text-dim)' }}>Your digital card is being generated. You can find it live at:</p>
         
         <div className="live-link-box">
-           mydigi.cards/{paidSlug}
+           bizzcards/{paidSlug}
         </div>
         
         <div className="step-card">

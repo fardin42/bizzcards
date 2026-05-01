@@ -29,7 +29,7 @@ export default function CheckoutForm({ setView, setPaidSlug }) {
 
     try {
       // 1. Create Order
-      const res = await fetch('https://qysyznj5.ap-southeast.insforge.app/functions/create-razorpay-order', {
+      const res = await fetch('https://r5t9vg65.ap-southeast.insforge.app/functions/create-razorpay-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(finalForm)
@@ -42,11 +42,11 @@ export default function CheckoutForm({ setView, setPaidSlug }) {
       const options = {
         key: keyId,
         subscription_id: subscriptionId,
-        name: "MyDigi Cards",
+        name: "Bizzcards",
         description: "One-time Setup + Monthly Subscription",
         handler: async function (response) {
           // 3. Verify Payment
-          const vRes = await fetch('https://qysyznj5.ap-southeast.insforge.app/functions/verify-razorpay-payment', {
+          const vRes = await fetch('https://r5t9vg65.ap-southeast.insforge.app/functions/verify-razorpay-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -119,7 +119,7 @@ export default function CheckoutForm({ setView, setPaidSlug }) {
       <div className="input-group">
         <label>Your Custom URL Link</label>
         <div className="url-input-container">
-          <span className="url-prefix">mydigi.cards/{form.category === 'others' ? (customCategory.toLowerCase().replace(/ /g, '-') || 'category') : form.category}/</span>
+          <span className="url-prefix">bizzcards/{form.category === 'others' ? (customCategory.toLowerCase().replace(/ /g, '-') || 'category') : form.category}/</span>
           <input 
             required 
             type="text" 
@@ -129,7 +129,7 @@ export default function CheckoutForm({ setView, setPaidSlug }) {
           />
         </div>
         <p style={{ fontSize: '0.8rem', color: '#718096', marginTop: '8px' }}>
-           Example: mydigi.cards/{form.category === 'others' ? (customCategory.toLowerCase().replace(/ /g, '-') || 'category') : form.category}/{form.slug || 'businessname'}
+           Example: bizzcards/{form.category === 'others' ? (customCategory.toLowerCase().replace(/ /g, '-') || 'category') : form.category}/{form.slug || 'businessname'}
         </p>
       </div>
 

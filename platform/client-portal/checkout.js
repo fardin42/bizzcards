@@ -1,6 +1,6 @@
 // Replace with your InsForge project details
-const INSFORGE_URL = 'https://qysyznj5.ap-southeast.insforge.app';
-const INSFORGE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC0xMjM0LTU2NzgtOTBhYi1jZGVmMTIzNDU2NzgiLCJlbWFpbCI6ImFub25AaW5zZm9yZ2UuY29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ1Mjg5Njh9.TIFFGJ-KguVF5Mh267YgPlNWaOnc7x8N2Ro2vv1apGM'; // Get from Dashboard -> API Settings
+const INSFORGE_URL = 'https://r5t9vg65.ap-southeast.insforge.app';
+const INSFORGE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3OC0xMjM0LTU2NzgtOTBhYi1jZGVmMTIzNDU2NzgiLCJlbWFpbCI6ImFub25AaW5zZm9yZ2UuY29tIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2MjAyNTl9.ZYRuDmsTRC5Ynnmv_6-v954E7au7aMObeS-MZgKkubA'; // Get from Dashboard -> API Settings
 
 // For now, we will use a fetch directly to the edge function. 
 // Edge functions don't enforce RLS by themselves but we pass the anon key in headers.

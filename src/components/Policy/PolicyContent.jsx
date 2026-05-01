@@ -5,7 +5,7 @@ export default function PolicyContent({ type }) {
     privacy: (
       <div className="policy-content">
         <h1>Privacy Policy</h1>
-        <p>Your privacy is important to us. This Privacy Policy explains how MyDigi Cards collects, uses, and protects your information.</p>
+        <p>Your privacy is important to us. This Privacy Policy explains how Bizzcards collects, uses, and protects your information.</p>
         
         <h2>Information We Collect</h2>
         <ul>
@@ -24,10 +24,10 @@ export default function PolicyContent({ type }) {
     terms: (
       <div className="policy-content">
         <h1>Terms & Conditions</h1>
-        <p>By using MyDigi Cards, you agree to comply with and be bound by the following terms and conditions of use.</p>
+        <p>By using Bizzcards, you agree to comply with and be bound by the following terms and conditions of use.</p>
 
         <h2>Use of Service</h2>
-        <p>MyDigi Cards provides digital business card solutions. You are responsible for ensuring the accuracy of the information provided on your card.</p>
+        <p>Bizzcards provides digital business card solutions. You are responsible for ensuring the accuracy of the information provided on your card.</p>
 
         <h2>Subscription & Billing</h2>
         <p>Our service is based on a recurring subscription model. By subscribing, you authorize us to charge the applicable fees to your chosen payment method.</p>
@@ -39,7 +39,7 @@ export default function PolicyContent({ type }) {
     refund: (
       <div className="policy-content">
         <h1>Refund & Cancellation Policy</h1>
-        <p>At MyDigi Cards, we strive for customer satisfaction.</p>
+        <p>At Bizzcards, we strive for customer satisfaction.</p>
 
         <h2>Cancellation</h2>
         <p>You can cancel your subscription at any time through your dashboard or by contacting support. Once cancelled, your card will remain active until the end of the current billing cycle.</p>
@@ -59,8 +59,8 @@ export default function PolicyContent({ type }) {
         <p>If you have any questions about these policies or our service, please contact us:</p>
         
         <div style={{ marginTop: '20px' }}>
-          <p><b>Business Name:</b> MyDigi Cards</p>
-          <p><b>Email:</b> contact@pgrowmedia.com</p>
+          <p><b>Business Name:</b> Bizzcards</p>
+          <p><b>Email:</b> contact@bizzcards.com</p>
           <p><b>Address:</b> 6th Floor 604, ABH CAPITAL, B-wing, opp. Mayor's Bungalow, Tilak Wadi, Police Staff Colony, Nashik, Maharashtra 422002</p>
           <p><b>Support Hours:</b> Mon-Sat, 10 AM - 6 PM IST</p>
         </div>
@@ -69,7 +69,7 @@ export default function PolicyContent({ type }) {
     about: (
       <div className="policy-content">
         <h1>About Us</h1>
-        <p>Welcome to MyDigi Cards, your partner in modern networking.</p>
+        <p>Welcome to Bizzcards, your partner in modern networking.</p>
         <p>We provide professionals and businesses with sleek, interactive, and environmentally friendly digital business cards. Our mission is to help you make a lasting impression in a digital-first world.</p>
         <h2>Why Choose Us?</h2>
         <ul>
