@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="manifest" href="/manifest.json">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="assets/portrait.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/portrait.png">
     <title>Rahul Deshmukh - Digital Business Card</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -459,8 +459,10 @@
         // Register Service Worker
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
+                // Use relative path for sw.js to ensure it works in subdirectories if needed, 
+                // but root /sw.js is best for domain-wide scope.
                 navigator.serviceWorker.register('/sw.js').then(reg => {
-                    console.log('SW Registered', reg);
+                    console.log('SW Registered', reg.scope);
                 }).catch(err => {
                     console.log('SW Registration Failed', err);
                 });
@@ -474,30 +476,40 @@
         const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
         window.addEventListener('beforeinstallprompt', (e) => {
+            console.log('PWA: beforeinstallprompt fired');
+            // Prevent Chrome 67 and earlier from automatically showing the prompt
             e.preventDefault();
+            // Stash the event so it can be triggered later.
             deferredPrompt = e;
-            // Native install supported
-            installBtn.onclick = () => {
-                deferredPrompt.prompt();
-                deferredPrompt.userChoice.then((choiceResult) => {
-                    if (choiceResult.outcome === 'accepted') installBtn.style.display = 'none';
-                    deferredPrompt = null;
-                });
-            };
         });
 
-        // Fallback for iOS or non-PWA browsers
+        // Click handler for the install button
         installBtn.onclick = () => {
             if (deferredPrompt) {
+                // Show the native install prompt
                 deferredPrompt.prompt();
+                // Wait for the user to respond to the prompt
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                        installBtn.style.display = 'none';
+                    }
+                    deferredPrompt = null;
+                });
             } else if (isIOS) {
                 alert('To install: Tap the "Share" icon in Safari and select "Add to Home Screen"');
             } else {
-                alert('Installation is supported in Chrome, Edge, and Safari on your mobile device.');
+                // Fallback for Chrome/Android if prompt hasn't fired yet
+                if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+                    alert('Installation requires an HTTPS (Secure) connection. Please check your site URL.');
+                } else {
+                    alert('To install: Tap the three dots (⋮) in Chrome and select "Install app" or "Add to home screen"');
+                }
             }
         };
 
-        window.addEventListener('appinstalled', () => {
+        window.addEventListener('appinstalled', (evt) => {
+            console.log('PWA: App was installed');
             installBtn.style.display = 'none';
         });
     </script>
