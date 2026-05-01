@@ -1,0 +1,16 @@
+{
+  "name": "Bizzcards - Rahul Deshmukh",
+  "short_name": "Bizzcard",
+  "description": "Digital Business Card for Rahul Deshmukh",
+  "start_url": "/real-estate/index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1a365d",
+  "icons": [
+    {
+      "src": "/real-estate/favicon.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}
