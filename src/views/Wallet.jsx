@@ -134,45 +134,51 @@ const styles = {
     border: '1px solid #2d3748',
     boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
     position: 'relative',
+    paddingRight: '35px', /* prevent overlap with remove btn */
   },
   cardHeader: {
     display: 'flex',
-    alignItems: 'center',
-    gap: '16px',
+    alignItems: 'flex-start', /* Better alignment if text wraps */
+    gap: '12px',
     marginBottom: '20px',
   },
   avatar: {
-    width: '64px',
-    height: '64px',
+    width: '60px',
+    height: '60px',
     borderRadius: '50%',
     objectFit: 'cover',
     border: '2px solid #fff',
+    flexShrink: 0, /* Prevent image from shrinking */
   },
   info: {
     flex: 1,
+    minWidth: 0, /* Allow text-overflow in flexbox */
   },
   name: {
     margin: '0 0 4px 0',
-    fontSize: '1.2rem',
+    fontSize: '1.15rem',
     color: '#fff',
     fontWeight: '600',
+    wordBreak: 'break-word',
   },
   titleText: {
     margin: '0 0 2px 0',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     color: '#a0aec0',
+    wordBreak: 'break-word',
   },
   company: {
     margin: 0,
-    fontSize: '0.85rem',
+    fontSize: '0.8rem',
     color: '#fbbf24',
     fontWeight: '500',
+    wordBreak: 'break-word',
   },
   removeBtn: {
     position: 'absolute',
-    top: '12px',
-    right: '12px',
-    background: 'none',
+    top: '10px',
+    right: '10px',
+    background: 'rgba(255, 255, 255, 0.05)',
     border: 'none',
     color: '#718096',
     fontSize: '1.5rem',

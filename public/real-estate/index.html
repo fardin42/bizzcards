@@ -142,6 +142,9 @@
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 1000;
             pointer-events: none;
+            text-align: center;
+            width: max-content;
+            max-width: 90vw;
         }
         .toast.show {
             transform: translateX(-50%) translateY(0);
@@ -336,6 +339,32 @@
 
         .footer-btn svg { width: 20px; height: 20px; }
 
+        /* Mobile Responsiveness */
+        @media (max-width: 380px) {
+            .footer-btn {
+                flex-direction: column;
+                gap: 4px;
+                font-size: 0.7rem;
+                padding: 5px;
+            }
+            .footer-btn svg {
+                width: 18px;
+                height: 18px;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .name {
+                font-size: 1.35rem;
+            }
+            .company {
+                font-size: 0.9rem;
+            }
+            .profile-img {
+                width: 110px;
+                height: 110px;
+            }
+        }
     </style>
 </head>
 <body>
