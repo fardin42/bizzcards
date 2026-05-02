@@ -13,7 +13,11 @@ import Footer from './components/Layout/Footer';
 import Wallet from './views/Wallet';
 
 export default function App() {
-  const [view, setView] = useState('home');
+  const [view, setView] = useState(() => {
+    const saved = localStorage.getItem('bizzcards_wallet');
+    const cards = saved ? JSON.parse(saved) : [];
+    return cards.length > 0 ? 'wallet' : 'home';
+  });
   const [loading, setLoading] = useState(false);
   const [clients, setClients] = useState([]);
   const [monthlyIncome, setMonthlyIncome] = useState(0);

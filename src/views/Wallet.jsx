@@ -7,7 +7,10 @@ export default function Wallet({ setView }) {
     const saved = localStorage.getItem('bizzcards_wallet');
     if (saved) {
       try {
-        setCards(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        // Sort newest first
+        parsed.sort((a, b) => (b.timestamp || 0) - (a.timestamp || 0));
+        setCards(parsed);
       } catch (e) {
         console.error('Failed to parse wallet data', e);
       }
@@ -54,6 +57,14 @@ export default function Wallet({ setView }) {
               </div>
             </div>
           ))}
+
+          {/* Add a banner at the bottom to create their own card */}
+          <div style={styles.createBanner}>
+            <p style={{ margin: '0 0 10px 0', color: '#a0aec0', fontSize: '0.9rem' }}>Want a card like this?</p>
+            <button onClick={() => setView('checkout')} style={styles.createBtn}>
+              Create Your Own Card
+            </button>
+          </div>
         </div>
       )}
     </div>
@@ -186,5 +197,24 @@ const styles = {
     fontSize: '0.9rem',
     fontWeight: '600',
     transition: 'transform 0.2s',
+  },
+  createBanner: {
+    marginTop: '20px',
+    padding: '20px',
+    background: '#1a202c',
+    borderRadius: '16px',
+    border: '1px solid #2d3748',
+    textAlign: 'center',
+  },
+  createBtn: {
+    background: '#dc2626',
+    color: '#fff',
+    border: 'none',
+    padding: '12px 24px',
+    borderRadius: '10px',
+    fontSize: '1rem',
+    fontWeight: '600',
+    cursor: 'pointer',
+    width: '100%',
   }
 };
