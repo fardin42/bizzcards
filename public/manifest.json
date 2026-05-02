@@ -1,20 +1,20 @@
 {
-  "name": "Bizzcards - Rahul Deshmukh",
-  "short_name": "Bizzcard",
-  "description": "Digital Business Card for Rahul Deshmukh",
-  "start_url": "/real-estate/index.html",
+  "name": "My Bizzcards Wallet",
+  "short_name": "Bizzcards",
+  "description": "Your digital business card wallet.",
+  "start_url": "/?view=wallet",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#1a365d",
   "icons": [
     {
-      "src": "/real-estate/assets/logo.png",
+      "src": "/wallet-assets/wallet-icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/real-estate/assets/portrait.png",
+      "src": "/wallet-assets/wallet-icon.png",
       "sizes": "192x192",
       "type": "image/png"
     }

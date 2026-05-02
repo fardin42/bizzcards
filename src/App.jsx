@@ -10,6 +10,7 @@ import AdminLogin from './components/Admin/AdminLogin';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import PolicyContent from './components/Policy/PolicyContent';
 import Footer from './components/Layout/Footer';
+import Wallet from './views/Wallet';
 
 export default function App() {
   const [view, setView] = useState('home');
@@ -81,6 +82,12 @@ export default function App() {
       setView('admin');
       // Clear the URL parameter to keep it clean
       window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Wallet Routing: Access via /wallet or ?view=wallet
+    if (window.location.pathname === '/wallet' || params.get('view') === 'wallet') {
+      setView('wallet');
+      if (params.get('view')) window.history.replaceState({}, document.title, window.location.pathname);
     }
 
     // Success Redirect Handling: Persistence for Thank You page
@@ -159,6 +166,9 @@ export default function App() {
           </section>
         );
 
+      case 'wallet':
+        return <Wallet setView={setView} />;
+
       default:
         return <Home setView={setView} />;
     }
@@ -167,7 +177,7 @@ export default function App() {
   return (
     <div className="container">
       {renderView()}
-      {view !== 'admin' && <Footer setView={setView} setPolicyType={setPolicyType} />}
+      {view !== 'admin' && view !== 'wallet' && <Footer setView={setView} setPolicyType={setPolicyType} />}
     </div>
   );
 }
