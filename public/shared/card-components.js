@@ -56,6 +56,7 @@ function saveToWallet(cardData) {
     if (!wallet.find(c => c.id === cardData.id)) {
         wallet.push({
             ...cardData,
+            url: cardData.url || window.location.pathname,
             timestamp: new Date().getTime()
         });
         localStorage.setItem('bizzcards_wallet', JSON.stringify(wallet));
