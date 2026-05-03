@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <title>Rahul Deshmukh - Digital Business Card</title>
+    
+    <!-- Shared Variables & Assets -->
+    <link rel="stylesheet" href="../../shared/base.css">
+    <script src="../../shared/card-components.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --surface-color: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --theme-color: #1a365d;
+            --accent-green: #22c55e;
+            --content-align: center;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+        }
+
+        .card-container {
+            background: var(--surface-color);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
+            position: relative;
+            padding-bottom: 120px;
+        }
+
+        .header { padding: 25px; text-align: center; border-bottom: 3px solid var(--theme-color); margin-bottom: 50px; }
+        .logo { height: 45px; }
+
+        .profile-section { margin-top: -75px; padding: 0 25px; }
+        .profile-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
+        
+        .name { font-size: 1.6rem; font-weight: 700; color: var(--theme-color); margin-top: 15px; }
+        .badge { display: inline-block; border: 1.5px solid var(--theme-color); color: var(--theme-color); padding: 5px 15px; border-radius: 25px; font-size: 0.8rem; font-weight: 700; margin-top: 10px; }
+        .category { font-size: 0.8rem; color: #94a3b8; margin-top: 10px; }
+
+        .action-grid { display: flex; justify-content: center; gap: 18px; margin: 35px 0; }
+        .action-circle { width: 50px; height: 50px; background: #fff; border: 1px solid #e2e8f0; color: var(--theme-color); transition: all 0.2s; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .action-circle:hover { background: var(--theme-color); color: #fff; transform: translateY(-5px); }
+
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .service-tag { background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; color: var(--theme-color); }
+
+        .contact-item { display: flex; align-items: center; gap: 18px; padding: 18px; background: #f8fafc; border-radius: 16px; margin-bottom: 15px; text-decoration: none; text-align: left; }
+        .contact-icon-box { background: var(--theme-color); color: #fff; }
+
+        .hours-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+        .day { color: var(--text-secondary); font-weight: 600; }
+        .time { font-weight: 700; color: var(--theme-color); }
+
+        .footer-nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: calc(100% - 50px); max-width: 430px; display: flex; gap: 12px; z-index: 100; }
+        .footer-btn { flex: 1; height: 54px; border-radius: 16px; border: none; display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 0.85rem; font-weight: 800; color: #fff; cursor: pointer; }
+        .btn-whatsapp { background: var(--accent-green); }
+        .btn-save { background: var(--theme-color); }
+        .btn-wallet { background: #111827; }
+
+        .icon-box svg { width: 22px; height: 22px; }
+        .footer-btn svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="card-container container">
+    <!-- Header -->
+    <header class="header">
+        <img src="assets/logo.png" alt="Logo" class="logo">
+    </header>
+
+    <!-- Profile -->
+    <div class="profile-section">
+        <img src="assets/portrait.png" alt="Profile" class="profile-img">
+        <div class="name-section">
+            <h1 class="name">Rahul Deshmukh</h1>
+            <p class="company">Managing Director, Deshmukh Real Estate</p>
+            <div class="badge" id="badge-container"></div>
+            <p class="category">Category: Luxury Residential & Commercial Properties</p>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="action-grid" id="action-grid-container"></div>
+
+    <!-- About -->
+    <section class="section">
+        <h2 class="section-title">🏘️ About Us</h2>
+        <div class="content-card">
+            <p class="about-text">
+                <b>Deshmukh Real Estate</b> is a premier property consultancy firm dedicated to finding you the perfect space.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section">
+        <h2 class="section-title">🏢 Core Services</h2>
+        <div class="services-grid" id="services-container"></div>
+    </section>
+
+    <!-- Contact Info -->
+    <section class="section">
+        <h2 class="section-title">📞 Get In Touch</h2>
+        <div class="contact-list" id="contact-container"></div>
+    </section>
+
+    <!-- Business Hours -->
+    <section class="section">
+        <h2 class="section-title">⏱️ Business Hours</h2>
+        <div class="content-card" id="hours-container"></div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer-nav">
+        <button class="footer-btn btn-whatsapp" onclick="handleAction('whatsapp')">
+            <script>document.write(ICONS.whatsapp)</script> WhatsApp
+        </button>
+        <button class="footer-btn btn-save" onclick="handleAction('save')">
+            <script>document.write(ICONS.save)</script> Save
+        </button>
+        <button class="footer-btn btn-wallet" onclick="handleAction('wallet')">
+            <script>document.write(ICONS.wallet)</script> Wallet
+        </button>
+    </div>
+
+    <div id="toast" class="toast">✅ Added to Wallet</div>
+</div>
+
+<script>
+    const CONFIG = {
+        id: 'rahul-deshmukh-real-estate',
+        name: 'Rahul Deshmukh',
+        title: 'Managing Director',
+        company: 'Deshmukh Real Estate',
+        avatar: '/real-estate/rahul-deshmukh/assets/portrait.png',
+        badge: 'RERA Reg #A52100012345',
+        actions: ['phone', 'whatsapp', 'map', 'mail'],
+        services: ['Luxury Villas', 'Commercial Leasing', 'Property Management', 'Investment Consulting'],
+        contacts: [
+            { type: 'phone', label: 'Call Now', value: '+91 98220 12345', link: 'tel:+919822012345' },
+            { type: 'mail', label: 'Email Address', value: 'rahul@deshmukhrealestate.com', link: 'mailto:rahul@deshmukhrealestate.com' },
+            { type: 'map', label: 'Office Address', value: 'Business Bay, Pune 411016' }
+        ],
+        hours: [
+            { day: 'Mon - Sat', time: '10:00 AM - 08:00 PM' },
+            { day: 'Sunday', time: 'CLOSED' }
+        ]
+    };
+
+    // Render Logic
+    document.getElementById('badge-container').textContent = CONFIG.badge;
+    renderActionGrid('action-grid-container', CONFIG.actions);
+    
+    document.getElementById('services-container').innerHTML = CONFIG.services.map(s => `
+        <div class="service-tag">${s}</div>
+    `).join('');
+
+    document.getElementById('contact-container').innerHTML = CONFIG.contacts.map(c => `
+        <a href="${c.link || '#'}" class="contact-item">
+            <div class="contact-icon-box icon-box icon-sm" style="color:#fff">${ICONS[c.type]}</div>
+            <div>
+                <span class="contact-label">${c.label}</span>
+                <span class="contact-value">${c.value}</span>
+            </div>
+        </a>
+    `).join('');
+
+    document.getElementById('hours-container').innerHTML = CONFIG.hours.map(h => `
+        <div class="hours-row">
+            <span class="day">${h.day}</span>
+            <span class="time">${h.time}</span>
+        </div>
+    `).join('');
+
+    function handleAction(type) {
+        if (type === 'whatsapp') window.location.href = 'https://wa.me/919822012345';
+        if (type === 'save') showToast('✅ Contact Saved!');
+        if (type === 'wallet') saveToWallet(CONFIG);
+    }
+</script>
+
+</body>
+</html>

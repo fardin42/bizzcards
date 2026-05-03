@@ -1,0 +1,114 @@
+:root {
+    /* Layout Variables */
+    --card-max-width: 480px;
+    --card-padding: 25px;
+    --section-gap: 35px;
+    --item-gap: 15px;
+    
+    /* Spacing */
+    --spacing-sm: 10px;
+    --spacing-md: 18px;
+    --spacing-lg: 25px;
+    --spacing-xl: 35px;
+
+    /* Shape Variables */
+    --radius-xl: 24px;
+    --radius-md: 16px;
+    --radius-circle: 50%;
+    --icon-size-md: 44px;
+    --icon-size-sm: 32px;
+    
+    /* Shared Aesthetics */
+    --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Default Alignment */
+    --content-align: left;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Layout Utilities */
+.container {
+    width: 100%;
+    max-width: var(--card-max-width);
+    margin: 0 auto;
+    text-align: var(--content-align);
+}
+
+.section {
+    padding: 0 var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-title {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    color: var(--theme-color);
+}
+
+/* Icon Standardization */
+.icon-box {
+    aspect-ratio: 1/1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.icon-sm { width: var(--icon-size-sm); height: var(--icon-size-sm); border-radius: 8px; }
+.icon-md { width: var(--icon-size-md); height: var(--icon-size-md); border-radius: 50%; }
+
+/* Component: Content Card */
+.content-card {
+    background: var(--surface-color, #fff);
+    padding: 22px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+/* Component: Toast */
+.toast {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #22c55e;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(34, 197, 94, 0.3);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1000;
+    pointer-events: none;
+    text-align: center;
+    width: max-content;
+    max-width: 90vw;
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}

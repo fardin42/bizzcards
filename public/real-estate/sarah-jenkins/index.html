@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="shortcut icon" href="assets/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/logo.png">
+    <title>Sarah Jenkins - Jenkins & Associates Luxury Realty</title>
+    
+    <!-- Shared Variables & Assets -->
+    <link rel="stylesheet" href="../../shared/base.css">
+    <script src="../../shared/card-components.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0f0d;
+            --surface: #121a16;
+            --accent-gold: #d4af37;
+            --accent-emerald: #064e3b;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            --content-align: left;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+        }
+
+        .card-container {
+            background: linear-gradient(180deg, var(--bg-dark) 0%, var(--surface) 100%);
+            box-shadow: 0 0 100px rgba(6, 78, 59, 0.1);
+            position: relative;
+            padding-bottom: 120px;
+        }
+
+        .hero { position: relative; height: 280px; overflow: hidden; }
+        .hero-img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+        .hero-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 100px; background: linear-gradient(transparent, var(--bg-dark)); }
+        .logo-box { position: absolute; top: 25px; left: 25px; background: rgba(10, 15, 13, 0.8); backdrop-filter: blur(10px); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--glass-border); }
+        .logo { height: 35px; }
+
+        .profile-section { padding: 0 25px; margin-top: -80px; position: relative; z-index: 10; text-align: var(--content-align); }
+        .profile-img { width: 140px; height: 140px; border-radius: 24px; object-fit: cover; border: 4px solid var(--surface); box-shadow: var(--shadow); }
+        .name { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-top: 10px; }
+        .company { color: var(--accent-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-emerald); color: #fff; padding: 6px 14px; border-radius: 30px; font-size: 0.75rem; font-weight: 700; margin-top: 12px; white-space: nowrap; }
+
+        .action-grid { display: flex; justify-content: flex-start; gap: 15px; padding: 30px 25px; }
+        .action-circle { width: 54px; height: 54px; color: var(--text-primary); background: var(--glass); border: 1px solid var(--glass-border); transition: all 0.3s; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; }
+        .action-circle:hover { background: var(--accent-gold); color: var(--bg-dark); transform: translateY(-5px); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 25px; }
+        .stat-item { text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.02); border-radius: 16px; border: 1px solid var(--glass-border); }
+        .stat-value { display: block; font-size: 1.2rem; font-weight: 800; color: var(--accent-gold); }
+        .stat-label { font-size: 0.65rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; }
+
+        .contact-item { display: flex; align-items: center; gap: 18px; padding: 16px; background: var(--glass); border-radius: 18px; border: 1px solid var(--glass-border); transition: all 0.3s; text-decoration: none; color: inherit; margin-bottom: 12px; }
+        .contact-icon-box { background: var(--accent-emerald); color: #fff; }
+
+        .gallery-scroll { display: flex; gap: 15px; overflow-x: auto; padding-bottom: 10px; scrollbar-width: none; }
+        .gallery-item { min-width: 260px; height: 180px; border-radius: 20px; overflow: hidden; position: relative; border: 1px solid var(--glass-border); }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; }
+        .gallery-price { position: absolute; bottom: 15px; left: 15px; background: rgba(0, 0, 0, 0.7); backdrop-filter: blur(5px); padding: 5px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 700; color: var(--accent-gold); }
+
+        .footer-nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); width: calc(100% - 40px); max-width: 440px; display: flex; gap: 10px; z-index: 100; background: rgba(10, 15, 13, 0.8); backdrop-filter: blur(20px); padding: 12px; border-radius: 24px; border: 1px solid var(--glass-border); }
+        .footer-btn { flex: 1; height: 52px; border-radius: 14px; border: none; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 0.85rem; font-weight: 700; cursor: pointer; }
+        .btn-whatsapp { background: #25d366; color: #fff; }
+        .btn-save { background: var(--accent-gold); color: var(--bg-dark); }
+        .btn-wallet { background: #fff; color: #000; }
+
+        .icon-box svg { width: 24px; height: 24px; }
+        .footer-btn svg { width: 20px; height: 20px; }
+    </style>
+</head>
+<body>
+
+<div class="card-container container">
+    <div class="hero">
+        <img src="assets/mansion.png" alt="Hero" class="hero-img">
+        <div class="hero-overlay"></div>
+        <div class="logo-box"><img src="assets/logo.png" class="logo"></div>
+    </div>
+
+    <div class="profile-section">
+        <img src="assets/portrait.png" class="profile-img">
+        <div class="name-section">
+            <h1 class="name">Sarah Jenkins</h1>
+            <p class="company">Principal Broker | Jenkins & Associates</p>
+            <div class="badge" id="badge-container"></div>
+        </div>
+    </div>
+
+    <div class="action-grid" id="action-grid-container"></div>
+
+    <section class="section">
+        <h2 class="section-title">Professional Expertise</h2>
+        <div class="content-card" style="background: var(--glass); border: 1px solid var(--glass-border);">
+            <p class="about-text" style="color: var(--text-primary); line-height: 1.6;">
+                With over <b>$500M in lifetime sales</b>, Sarah Jenkins specializes in high-end residential estates.
+            </p>
+            <div class="stats-grid" id="stats-container"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Current Listings</h2>
+        <div class="gallery-scroll" id="gallery-container"></div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Direct Channels</h2>
+        <div class="contact-list" id="contact-container"></div>
+    </section>
+
+    <div class="footer-nav">
+        <button class="footer-btn btn-whatsapp" onclick="handleAction('whatsapp')">
+            <script>document.write(ICONS.whatsapp)</script> <span>WhatsApp</span>
+        </button>
+        <button class="footer-btn btn-save" onclick="handleAction('save')">
+            <script>document.write(ICONS.save)</script> <span>Save</span>
+        </button>
+        <button class="footer-btn btn-wallet" onclick="handleAction('wallet')">
+            <script>document.write(ICONS.wallet)</script> <span>Wallet</span>
+        </button>
+    </div>
+
+    <div id="toast" class="toast">✅ Added to Wallet</div>
+</div>
+
+<script>
+    const CONFIG = {
+        id: 'sarah-jenkins-luxury-realty',
+        name: 'Sarah Jenkins',
+        title: 'Principal Broker',
+        company: 'Jenkins & Associates',
+        avatar: '/real-estate/sarah-jenkins/assets/portrait.png',
+        badge: 'Elite Luxury Specialist',
+        actions: ['phone', 'mail', 'map', 'whatsapp'],
+        stats: [
+            { label: 'Experience', value: '12y+' },
+            { label: 'Closed', value: '450+' },
+            { label: 'Referral', value: '98%' }
+        ],
+        contacts: [
+            { type: 'phone', label: 'Mobile', value: '+1 (555) 123-4567', link: 'tel:+15551234567' },
+            { type: 'mail', label: 'Email', value: 'sarah@jenkinsrealty.com', link: 'mailto:sarah@jenkinsrealty.com' },
+            { type: 'map', label: 'Headquarters', value: '7200 Ocean Blvd, Miami, FL' }
+        ],
+        listings: [
+            { img: 'assets/mansion.png', price: '$4,250,000' },
+            { img: 'assets/mansion.png', price: '$6,800,000', filter: 'hue-rotate(45deg)' }
+        ]
+    };
+
+    document.getElementById('badge-container').innerHTML = ` ${CONFIG.badge}`;
+    renderActionGrid('action-grid-container', CONFIG.actions);
+
+    document.getElementById('stats-container').innerHTML = CONFIG.stats.map(s => `
+        <div class="stat-item">
+            <span class="stat-value">${s.value}</span>
+            <span class="stat-label">${s.label}</span>
+        </div>
+    `).join('');
+
+    document.getElementById('gallery-container').innerHTML = CONFIG.listings.map(l => `
+        <div class="gallery-item">
+            <img src="${l.img}" class="gallery-img" style="filter: ${l.filter || 'none'}">
+            <div class="gallery-price">${l.price}</div>
+        </div>
+    `).join('');
+
+    document.getElementById('contact-container').innerHTML = CONFIG.contacts.map(c => `
+        <a href="${c.link || '#'}" class="contact-item">
+            <div class="contact-icon-box icon-box icon-sm" style="color:#fff">${ICONS[c.type]}</div>
+            <div class="contact-info">
+                <span class="contact-label">${c.label}</span>
+                <span class="contact-value" style="color:var(--text-primary)">${c.value}</span>
+            </div>
+        </a>
+    `).join('');
+
+    function handleAction(type) {
+        if (type === 'phone') window.location.href = 'tel:+15551234567';
+        if (type === 'mail') window.location.href = 'mailto:sarah@jenkinsrealty.com';
+        if (type === 'whatsapp') window.location.href = 'https://wa.me/15551234567';
+        if (type === 'wallet') saveToWallet(CONFIG);
+        if (type === 'save') showToast('✅ Contact Saved!');
+    }
+</script>
+
+</body>
+</html>
