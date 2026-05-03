@@ -43,7 +43,7 @@
         .header { padding: 25px; text-align: center; border-bottom: 3px solid var(--theme-color); margin-bottom: 50px; }
         .logo { height: 45px; }
 
-        .profile-section { margin-top: -75px; padding: 0 25px; }
+        .profile-section {  padding: 0 25px; }
         .profile-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); }
         
         .name { font-size: 1.6rem; font-weight: 700; color: var(--theme-color); margin-top: 15px; }
@@ -78,9 +78,11 @@
 
 <div class="card-container container">
     <!-- Header -->
-    <header class="header">
-        <img src="assets/logo.png" alt="Logo" class="logo">
-    </header>
+    <div class="premium-banner" style="background-image: url('assets/banner.png');">
+        <div class="banner-overlay"></div>
+        <div class="banner-content"></div>
+        <div class="banner-accent" style="background: var(--accent-green);"></div>
+    </div>
 
     <!-- Profile -->
     <div class="profile-section">

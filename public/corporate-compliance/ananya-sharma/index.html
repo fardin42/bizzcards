@@ -31,7 +31,7 @@
         .header { padding: 25px; text-align: center; border-bottom: 3px solid var(--theme-color); margin-bottom: 40px; }
         .logo { height: 45px; }
 
-        .profile-section { margin-top: -60px; padding: 0 25px; }
+        .profile-section {  padding: 0 25px; }
         .profile-img { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         
         .name { font-size: 1.6rem; font-weight: 700; color: #000; margin-top: 15px; }
@@ -63,9 +63,11 @@
 <body>
 
 <div class="card-container container">
-    <header class="header">
-        <img src="assets/logo.png" alt=" शर्मा कॉर्पोरेट" class="logo">
-    </header>
+    <div class="premium-banner" style="background-image: url('assets/banner.png');">
+        <div class="banner-overlay"></div>
+        <div class="banner-content"></div>
+        <div class="banner-accent" style="background: var(--accent-gold);"></div>
+    </div>
 
     <div class="profile-section">
         <img src="assets/portrait.png" alt="Ananya Sharma" class="profile-img">

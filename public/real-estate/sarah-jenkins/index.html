@@ -49,7 +49,7 @@
         .logo-box { position: absolute; top: 25px; left: 25px; background: rgba(10, 15, 13, 0.8); backdrop-filter: blur(10px); padding: 10px 15px; border-radius: 12px; border: 1px solid var(--glass-border); }
         .logo { height: 35px; }
 
-        .profile-section { padding: 0 25px; margin-top: -80px; position: relative; z-index: 10; text-align: var(--content-align); }
+        .profile-section {margin-top: -200px; padding: 0 25px;  position: relative; z-index: 10; text-align: var(--content-align); }
         .profile-img { width: 140px; height: 140px; border-radius: 24px; object-fit: cover; border: 4px solid var(--surface); box-shadow: var(--shadow); }
         .name { font-size: 1.8rem; font-weight: 800; color: var(--text-primary); margin-top: 10px; }
         .company { color: var(--accent-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
@@ -85,10 +85,15 @@
 <body>
 
 <div class="card-container container">
+    <div class="premium-banner" style="background-image: url('assets/banner.png');">
+        <div class="banner-overlay"></div>
+        <div class="banner-content"></div>
+        <div class="banner-accent" style="background: var(--accent-gold);"></div>
+    </div>
+
     <div class="hero">
         <img src="assets/mansion.png" alt="Hero" class="hero-img">
         <div class="hero-overlay"></div>
-        <div class="logo-box"><img src="assets/logo.png" class="logo"></div>
     </div>
 
     <div class="profile-section">

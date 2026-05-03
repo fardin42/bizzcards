@@ -31,7 +31,7 @@
         .header { padding: 30px; text-align: center; border-bottom: 4px solid var(--theme-color); margin-bottom: 40px; }
         .logo { height: 45px; }
 
-        .profile-section { margin-top: -65px; padding: 0 25px; }
+        .profile-section {  padding: 0 25px; }
         .profile-img { width: 130px; height: 130px; border-radius: 20px; object-fit: cover; border: 5px solid #fff; box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
         
         .name { font-size: 1.7rem; font-weight: 700; color: var(--theme-color); margin-top: 15px; }
@@ -65,9 +65,11 @@
 <body>
 
 <div class="card-container container">
-    <header class="header">
-        <img src="assets/logo.png" alt="Rodriguez Legal Logo" class="logo">
-    </header>
+    <div class="premium-banner" style="background-image: url('assets/banner.png');">
+        <div class="banner-overlay"></div>
+        <div class="banner-content"></div>
+        <div class="banner-accent" style="background: var(--accent-gold);"></div>
+    </div>
 
     <div class="profile-section">
         <img src="assets/portrait.png" alt="Elena Rodriguez" class="profile-img">
