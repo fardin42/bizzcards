@@ -157,9 +157,9 @@ export default function Home({ setView }) {
               <p>Best for Individuals & Freelancers</p>
             </div>
             <div className="price-amount">
-              <span className="strike-price">₹2,499</span>
+              <span className="strike-price">₹2,999</span>
               <span className="current-price">₹1,999<span className="period">/yr</span></span>
-              <span className="monthly-eq">~ ₹166 / mo</span>
+              <span className="monthly-eq">~ ₹167 / mo</span>
             </div>
             <ul className="price-features">
               <li>✓ Custom URL</li>
@@ -202,17 +202,17 @@ export default function Home({ setView }) {
               <p>Best for Agencies & Teams</p>
             </div>
             <div className="price-amount">
-              <span className="strike-price">₹14,999</span>
-              <span className="current-price">₹9,999<span className="period">/yr</span></span>
-              <span className="monthly-eq">~ ₹833 / mo</span>
+              <span className="strike-price">₹24,999</span>
+              <span className="current-price">₹14,999<span className="period">/yr</span></span>
+              <span className="monthly-eq">~ ₹1,250 / mo</span>
             </div>
             <ul className="price-features">
               <li>✓ <b>Everything in Premium</b></li>
               <li>✓ Up to 10 Managed Cards</li>
               <li>✓ Central Admin Dashboard</li>
-              <li>✓ Corporate Branding</li>
-              <li>✓ Advanced Analytics</li>
-              <li>✓ Dedicated Account Manager</li>
+              <li>✓ Bulk Contact Updates</li>
+              <li>✓ Corporate Branding & Assets</li>
+              <li>✓ Priority Support & Account Manager</li>
             </ul>
             <button className="btn-primary outline" onClick={() => setView('checkout')}>Contact Sales</button>
           </div>
@@ -222,8 +222,8 @@ export default function Home({ setView }) {
            <h4>Need more than 10 cards?</h4>
            <p>Scale your team dynamically with our flexible per-seat model.</p>
            <div className="scale-tiers">
-              <div><span>11-50 Cards:</span> +₹899/card</div>
-              <div><span>51-100 Cards:</span> +₹699/card</div>
+              <div><span>11-50 Cards:</span> +₹1,299/card</div>
+              <div><span>51-100+ Cards:</span> +₹999/card</div>
            </div>
         </div>
       </section>
