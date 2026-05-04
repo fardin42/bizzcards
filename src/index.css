@@ -863,9 +863,6 @@ th {
 
 /* Media Queries for Landing Page */
 @media (max-width: 900px) {
-  .container {
-    padding: 0;
-  }
   .hero-section {
     grid-template-columns: 1fr;
     text-align: center;
@@ -911,6 +908,12 @@ th {
   }
   .section-header h2 {
     font-size: 2rem;
+  }
+}
+
+@media (max-width: 320px) {
+  .container {
+    padding: 0;
   }
 }
 
