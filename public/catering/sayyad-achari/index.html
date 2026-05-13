@@ -383,21 +383,11 @@
     <script>
         lucide.createIcons();
 
-        // Share Functionality
-        document.querySelector('.btn-share').addEventListener('click', async () => {
-            if (navigator.share) {
-                try {
-                    await navigator.share({
-                        title: 'Sayyad Achari - Premium Catering Services',
-                        text: 'Connect with Sajjad ali Sayyad for premium catering services!',
-                        url: window.location.href,
-                    });
-                } catch (err) {
-                    console.error('Error sharing:', err);
-                }
-            } else {
-                alert('Share not supported on this browser. You can copy the URL: ' + window.location.href);
-            }
+        // Share Functionality (WhatsApp)
+        document.querySelector('.btn-share').addEventListener('click', () => {
+            const shareText = 'Sayyad Achari - Premium Catering Services\nConnect with Sajjad ali Sayyad for premium catering services!\n' + window.location.href;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareText)}`;
+            window.open(whatsappUrl, '_blank');
         });
 
         // QR Modal Functionality
