@@ -16,20 +16,7 @@ export default function Home({ setView }) {
 
   return (
     <div className="landing-page">
-      {/* Top Navigation */}
-      <nav className="main-nav">
-        <a href="#" className="nav-logo">Biz<span>Pocket</span></a>
-        <div className="nav-links">
-          <a href="#products">Products</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#enterprise">Enterprise</a>
-          <a href="#about">About</a>
-        </div>
-        <div className="nav-actions">
-          <button className="nav-login" onClick={() => setView('admin')}>Login</button>
-          <button className="nav-get-started" onClick={() => setView('checkout')}>Get Started</button>
-        </div>
-      </nav>
+      
 
       {walletCards.length > 0 && (
         <div 

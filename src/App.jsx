@@ -179,9 +179,27 @@ export default function App() {
   };
 
   return (
-    <div className="container">
+    <>
+    {/* Top Navigation */}
+      <nav className="main-nav">
+        <div className="container">
+        <a href="#" className="nav-logo">Biz<span>Pocket</span></a>
+        <div className="nav-links">
+          <a href="#products">Products</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#enterprise">Enterprise</a>
+          <a href="#about">About</a>
+        </div>
+        <div className="nav-actions">
+          <button className="nav-login" onClick={() => setView('admin')}>Login</button>
+          <button className="nav-get-started" onClick={() => setView('checkout')}>Get Started</button>
+        </div>
+        </div>
+      </nav>
+    <div className="">
       {renderView()}
       {view !== 'admin' && view !== 'wallet' && <Footer setView={setView} setPolicyType={setPolicyType} />}
     </div>
+    </>
   );
 }

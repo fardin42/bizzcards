@@ -356,6 +356,9 @@ th {
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   padding: 15px 20px;
+  
+}
+.main-nav .container {
   display: flex;
   justify-content: space-between;
   align-items: center;

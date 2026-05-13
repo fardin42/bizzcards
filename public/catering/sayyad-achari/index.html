@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sayyad Achari - Premium Catering Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --primary-brown: #603813;
+            --secondary-gold: #C69C6D;
+            --bg-beige: #FDF9F0;
+            --text-dark: #331A05;
+            --white: #ffffff;
+            --accent-gold: #B8860B;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: var(--text-dark);
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 450px;
+            background-color: var(--bg-beige);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Border Decoration */
+        .card-container::before {
+            content: '';
+            position: absolute;
+            top: 10px; left: 10px; right: 10px; bottom: 10px;
+            border: 1.5px solid var(--secondary-gold);
+            border-radius: 10px;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Decorative Spices Background */
+        .spice {
+            position: absolute;
+            z-index: 2;
+            opacity: 0.8;
+            pointer-events: none;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.1));
+        }
+
+        .spice-1 { top: 40px; left: 30px; width: 60px; transform: rotate(-15deg); }
+        .spice-2 { top: 60px; right: 40px; width: 50px; transform: rotate(45deg); }
+        .spice-3 { top: 380px; left: 20px; width: 45px; transform: rotate(10deg); }
+        .spice-4 { bottom: 110px; right: 20px; width: 70px; transform: rotate(-30deg); }
+        .spice-5 { top: 450px; right: 20px; width: 40px; transform: rotate(120deg); }
+
+        .header-section {
+            background-color: #A0522D; /* Siennas/Brownish red */
+            background-image: linear-gradient(to bottom, #A0522D, var(--primary-brown));
+            height: 320px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            border-bottom-left-radius: 50% 60px;
+            border-bottom-right-radius: 50% 60px;
+            margin-bottom: 90px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .profile-wrapper {
+            position: absolute;
+            bottom: -70px;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            border: 10px solid var(--secondary-gold);
+            overflow: hidden;
+            z-index: 10;
+            background-color: var(--white);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .content-section {
+            padding: 0 40px 100px;
+            text-align: center;
+            flex-grow: 1;
+            z-index: 5;
+            background-image: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.4) 0%, transparent 70%);
+        }
+
+        .business-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            color: var(--primary-brown);
+            margin-bottom: 5px;
+            font-weight: 800;
+            letter-spacing: 0px;
+            line-height: 1.1;
+        }
+
+        .owner-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--text-dark);
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+
+        .info-block {
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .info-header {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 20px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(96, 56, 19, 0.3);
+            letter-spacing: 1px;
+        }
+
+        .services-list {
+            list-style: none;
+            padding-left: 5px;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 16px;
+            font-size: 17px;
+            line-height: 1.3;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .service-icon {
+            color: var(--primary-brown);
+            flex-shrink: 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .contact-icon-wrapper {
+            background-color: var(--primary-brown);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .footer-text {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--primary-brown);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 25px;
+            border-top: 2px solid rgba(96, 56, 19, 0.1);
+            padding-top: 20px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 30px;
+        }
+
+        /* Add a subtle texture overlay */
+        .texture-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/paper.png');
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Action Buttons */
+        .action-buttons-container {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 450px;
+            background-color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 15px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            border-top: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .action-btn {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 10px;
+            border: none;
+            border-radius: 12px;
+            color: var(--white);
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            position: relative;
+            z-index: 10;
+        }
+
+        .action-btn:active { transform: translateY(2px); }
+        .btn-share { background-color: #22c55e; }
+        .btn-qr { background-color: #007bff; }
+        .btn-save { background-color: #111827; }
+
+        /* QR Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+            max-width: 90%;
+            width: 300px;
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+        .qr-image {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="card-container">
+        <div class="texture-overlay"></div>
+
+        <!-- Decorative Spices -->
+        <img src="assets/spices/red-chilly.png" alt="" class="spice spice-1">
+        <img src="assets/spices/long.png" alt="" class="spice spice-2">
+        <img src="assets/spices/belpatra.png" alt="" class="spice spice-3">
+        <img src="assets/spices/red-chilly.png" alt="" class="spice spice-4">
+        <img src="assets/spices/long.png" alt="" class="spice spice-5">
+
+        <div class="header-section">
+            <div class="profile-wrapper">
+                <img src="assets/profile.png" alt="Sajjad ali Sayyad" class="profile-img">
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h1 class="business-name">SAYYAD ACHARI</h1>
+            <p class="owner-name">(Sajjad ali Sayyad)</p>
+
+            <div class="info-block">
+                <div class="info-header">OUR SERVICES:</div>
+                <ul class="services-list">
+                    <li class="service-item">
+                        <i data-lucide="sparkles" class="service-icon" size="22"></i>
+                        <span>Traditional Functions (Wedding, House-Warming, Community Feast, Memorial Services)</span>
+                    </li>
+                    <li class="service-item">
+                        <i data-lucide="utensils-crossed" class="service-icon" size="22"></i>
+                        <span>Small & Medium Event Catering</span>
+                    </li>
+                    <li class="service-item">
+                        <i data-lucide="star" class="service-icon" size="22"></i>
+                        <span>Expert in Veg & Non-Veg Dishes</span>
+                    </li>
+                    <li class="service-item">
+                        <i data-lucide="heart" class="service-icon" size="22"></i>
+                        <span>Flavorful, Local Taste</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="info-block">
+                <div class="info-header">CONTACT INFO:</div>
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper">
+                        <i data-lucide="phone" size="22"></i>
+                    </div>
+                    <span>+91 98222 46730</span>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon-wrapper">
+                        <i data-lucide="map-pin" size="22"></i>
+                    </div>
+                    <span style="text-align: left; font-size: 15px; font-weight: 600;">Hari Om Apt, Ground Floor 01, beside Shreyas Apartments, Saubhagya Nagar, Lam Rd, Nashik Road, Nashik, Maharashtra 422501</span>
+                </div>
+            </div>
+
+            <div class="action-buttons-container">
+                <button class="action-btn btn-share">
+                    <i data-lucide="share-2" size="18"></i>
+                    Share
+                </button>
+                <button class="action-btn btn-qr">
+                    <i data-lucide="qr-code" size="18"></i>
+                    QR
+                </button>
+                <button class="action-btn btn-save">
+                    <i data-lucide="user-plus" size="18"></i>
+                    Save
+                </button>
+            </div>
+
+            <div class="footer-text">
+                TASTE OF TRADITION FOR EVERY OCCASION
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Share Functionality
+        document.querySelector('.btn-share').addEventListener('click', async () => {
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Sayyad Achari - Premium Catering Services',
+                        text: 'Connect with Sajjad ali Sayyad for premium catering services!',
+                        url: window.location.href,
+                    });
+                } catch (err) {
+                    console.error('Error sharing:', err);
+                }
+            } else {
+                alert('Share not supported on this browser. You can copy the URL: ' + window.location.href);
+            }
+        });
+
+        // QR Modal Functionality
+        const qrBtn = document.querySelector('.btn-qr');
+        const modal = document.createElement('div');
+        modal.className = 'modal-overlay';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <div class="modal-close">&times;</div>
+                <h3 style="margin-bottom: 10px;">Scan to Connect</h3>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(window.location.href)}" alt="QR Code" class="qr-image">
+                <p style="font-weight: 600;">Sayyad Achari</p>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        qrBtn.addEventListener('click', () => modal.classList.add('active'));
+        modal.querySelector('.modal-close').addEventListener('click', () => modal.classList.remove('active'));
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.classList.remove('active');
+        });
+
+        // Save Contact Functionality (vCard)
+        document.querySelector('.btn-save').addEventListener('click', () => {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:Sajjad ali Sayyad
+ORG:Sayyad Achari
+TEL;TYPE=WORK,VOICE:+919822246730
+ADR;TYPE=WORK:;;Hari Om Apt, Ground Floor 01, beside Shreyas Apartments, Saubhagya Nagar, Lam Rd;Nashik Road, Nashik;Maharashtra;422501;India
+URL:${window.location.href}
+END:VCARD`;
+            const blob = new Blob([vcard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'Sayyad_Achari.vcf';
+            document.body.appendChild(a);
+            a.click();
+            window.URL.revokeObjectURL(url);
+        });
+    </script>
+</body>
+</html>
